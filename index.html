@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Ukaegbu - GTM and Marketing Operations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--border:#E8E6DF;--border-strong:#D3D1C7;
+    --text:#1E1E1E;--text-mid:#5F5E5A;--text-muted:#888780;
+    --teal:#0F6E56;--teal-light:#E1F5EE;
+    --amber:#854F0B;--amber-light:#FAEEDA;
+    --red:#A32D2D;--red-light:#FCEBEB;
+    --green:#3B6D11;--green-light:#EAF3DE;
+    --purple:#3C3489;--purple-light:#EEEDFE;
+    --coral:#993C1D;--coral-light:#FAECE7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;}
+  a{color:var(--teal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+
+  nav{border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:100;}
+  .nav-inner{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .logo{font-weight:600;font-size:15px;letter-spacing:-0.02em;}
+  .logo span{color:var(--teal);}
+  .nl{display:flex;gap:28px;}
+  .nl a{font-size:13px;color:var(--text-mid);}
+  .nl a:hover{color:var(--text);text-decoration:none;}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--border);}
+  .hero-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-light);padding:4px 12px;border-radius:20px;margin-bottom:20px;}
+  .hero h1{font-size:38px;font-weight:600;letter-spacing:-0.03em;line-height:1.15;margin-bottom:16px;max-width:580px;}
+  .hero p{font-size:16px;color:var(--text-mid);max-width:520px;line-height:1.75;margin-bottom:28px;}
+  .hero-meta{display:flex;gap:20px;flex-wrap:wrap;}
+  .hero-meta span{font-size:13px;color:var(--text-muted);}
+  .hero-meta strong{color:var(--text-mid);font-weight:500;}
+
+  section{padding:56px 0;border-bottom:1px solid var(--border);}
+  section:last-child{border-bottom:none;}
+  .slabel{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:32px;}
+
+  .pill{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin:2px;}
+  .pill.ops{background:var(--teal-light);color:var(--teal);}
+  .pill.data{background:var(--green-light);color:var(--green);}
+  .pill.crm{background:var(--purple-light);color:var(--purple);}
+  .pill.strat{background:var(--amber-light);color:var(--amber);}
+  .pill.build{background:var(--coral-light);color:var(--coral);}
+
+  .sbadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;flex-shrink:0;}
+  .sbadge.live{background:var(--green-light);color:var(--green);}
+  .sbadge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:32px;}
+  .card-head{padding:28px 32px 24px;border-bottom:1px solid var(--border);}
+  .card-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  .card-head h2{font-size:20px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px;margin-top:10px;}
+  .card-head .meta{font-size:13px;color:var(--text-muted);margin-top:4px;}
+  .card-body{padding:28px 32px;}
+
+  .anon{background:var(--amber-light);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--amber);line-height:1.6;margin-bottom:24px;display:flex;gap:8px;align-items:flex-start;border-left:3px solid var(--amber);}
+
+  .sit{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  .sit blockquote{font-style:italic;color:var(--text-mid);border-left:3px solid var(--teal-light);padding-left:16px;margin:16px 0 0;font-size:14px;line-height:1.7;}
+
+  .sub{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+  hr.l{border:none;border-top:1px solid var(--border);margin:24px 0;}
+
+  .mg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;}
+  .mc{background:var(--bg);border-radius:8px;padding:14px 16px;}
+  .mc .ml{font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+  .mc .mv{font-size:20px;font-weight:600;margin-bottom:2px;}
+  .mc .ms{font-size:11px;color:var(--text-muted);}
+  .mc.red .mv{color:var(--red);}
+  .mc.amb .mv{color:var(--amber);}
+  .mc.grn .mv{color:var(--green);}
+
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
+  .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px;}
+
+  .fi{padding:16px;background:var(--bg);border-left:3px solid var(--border-strong);}
+  .fi.problem{border-left-color:var(--red);}
+  .fi.insight{border-left-color:var(--teal);}
+  .fi.build{border-left-color:var(--coral);}
+  .fi h4{font-size:13px;font-weight:600;margin-bottom:6px;}
+  .fi p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+  .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+  .rc{background:var(--green-light);border-radius:8px;padding:16px;}
+  .rc .rb{font-size:11px;color:var(--text-muted);margin-bottom:2px;}
+  .rc .ra{font-size:16px;font-weight:600;color:var(--green);margin-bottom:4px;}
+  .rc .rd{font-size:12px;color:var(--text-mid);line-height:1.5;}
+
+  /* TOOLS EMBED BOX */
+  .tools-box{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px;}
+  .tools-box-head{padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--border);}
+  .tools-box-head p{font-size:12px;color:var(--text-muted);}
+  .tools-inner{padding:0;}
+
+  /* APP EMBED */
+  .app-box{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;}
+  .app-box-head{padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .app-box-head .abt{font-size:13px;font-weight:500;}
+  .app-box-head .abm{font-size:12px;color:var(--text-muted);}
+  .app-box-frame{background:#111;}
+  .app-box-frame iframe{width:100%;height:600px;border:none;display:block;}
+
+  /* FEATURE TABLE */
+  .ft{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:13px;}
+  .ft th{text-align:left;padding:8px 12px;background:var(--bg);color:var(--text-muted);font-size:11px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+  .ft td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+  .ft tr:last-child td{border-bottom:none;}
+  .ft tr:nth-child(even) td{background:var(--bg);}
+  .fs{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:10px;}
+  .fs.built{background:var(--green-light);color:var(--green);}
+  .fs.next{background:var(--amber-light);color:var(--amber);}
+  .fs.later{background:var(--border);color:var(--text-muted);}
+
+  /* STACK */
+  .sg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+  .sc{background:var(--bg);border-radius:8px;padding:14px 16px;}
+  .sc .sr{font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+  .sc .st{font-size:13px;font-weight:500;}
+  .sc .sn{font-size:11px;color:var(--text-muted);margin-top:3px;}
+
+  .tr{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+  .tt{font-size:11px;color:var(--text-mid);border:1px solid var(--border-strong);border-radius:20px;padding:3px 10px;font-family:'DM Mono',monospace;}
+
+  .note{background:var(--bg);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--text-muted);line-height:1.6;border:1px solid var(--border);}
+
+  .cs{border:1px dashed var(--border-strong);border-radius:12px;padding:32px;text-align:center;margin-bottom:32px;}
+  .cs h3{font-size:16px;font-weight:500;margin-bottom:8px;}
+  .cs p{font-size:13px;color:var(--text-muted);}
+  .cs-eta{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--border);color:var(--text-muted);margin-top:12px;}
+
+  .skills-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .sk{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+  .sk .skl{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+  .sk h3{font-size:14px;font-weight:600;margin-bottom:8px;}
+  .sk p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+
+  .about-g{display:grid;grid-template-columns:1fr minmax(220px,260px);gap:32px;}
+  .ab h2{font-size:24px;font-weight:600;letter-spacing:-0.02em;margin-bottom:16px;}
+  .ab p{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:16px;}
+  .side{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+  .side h4{font-size:13px;font-weight:600;margin-bottom:14px;}
+  .srow{display:flex;justify-content:space-between;align-items:flex-start;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border);}
+  .srow:last-child{border-bottom:none;}
+  .srow .sl{color:var(--text-muted);min-width:72px;flex-shrink:0;}
+  .srow .sv{font-weight:500;font-size:12px;text-align:right;word-break:break-word;}
+
+  footer{padding:32px 0;border-top:1px solid var(--border);background:var(--surface);}
+  footer .fi2{max-width:860px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
+  footer p{font-size:13px;color:var(--text-muted);}
+
+  /* ---- TOOLS WIDGET SCOPED STYLES ---- */
+  
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --bg:#FAFAF8;--surface:#FFFFFF;--border:#E8E6DF;--border-strong:#D3D1C7;
+    --text:#1E1E1E;--text-mid:#5F5E5A;--text-muted:#888780;
+    --hdr:#2C2C2A;--hdr-fg:#FFFFFF;--sub:#444441;--sub-fg:#FFFFFF;
+    --alt:#F5F4F0;
+    --red:#A32D2D;--red-bg:#FCEBEB;
+    --amber:#854F0B;--amber-bg:#FAEEDA;
+    --green:#3B6D11;--green-bg:#EAF3DE;
+    --teal:#0F6E56;--teal-bg:#E1F5EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+
+  /* TOOL WRAPPER */
+  .tool{display:none;padding:20px;}
+  .tool.active{display:block;}
+
+  /* TOP NAV */
+  .tool-nav{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:20px;overflow-x:auto;}
+  .tn{padding:8px 16px;font-size:12px;font-weight:500;color:var(--text-muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;}
+  .tn.active{color:var(--teal);border-bottom-color:var(--teal);}
+  .tn:hover{color:var(--text);}
+
+  /* TABLES */
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th{background:var(--hdr);color:var(--hdr-fg);padding:7px 10px;font-weight:500;text-align:left;white-space:nowrap;}
+  td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text-mid);vertical-align:top;}
+  tr:nth-child(even) td{background:var(--alt);}
+  tr:last-child td{font-weight:500;color:var(--text);background:var(--bg);}
+
+  /* SUB HEADER */
+  .sub-hdr{background:var(--sub);color:var(--sub-fg);padding:8px 12px;font-weight:500;font-size:12px;margin:16px 0 0;}
+
+  /* RAG */
+  .rag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+  .rag.r{background:var(--red-bg);color:var(--red);}
+  .rag.a{background:var(--amber-bg);color:var(--amber);}
+  .rag.g{background:var(--green-bg);color:var(--green);}
+
+  /* METRIC CARDS */
+  .metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+  .mc{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;}
+  .mc .lbl{font-size:11px;color:var(--text-muted);margin-bottom:4px;}
+  .mc .val{font-size:22px;font-weight:600;}
+  .mc .sub{font-size:11px;color:var(--text-muted);margin-top:2px;}
+  .mc.r .val{color:var(--red);}
+  .mc.a .val{color:var(--amber);}
+  .mc.g .val{color:var(--green);}
+
+  /* SECTION TITLE */
+  .sec{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin:20px 0 8px;}
+
+  /* ISSUE CARD */
+  .issue-card{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px;}
+  .issue-hdr{background:var(--hdr);color:var(--hdr-fg);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;}
+  .issue-hdr .id{font-family:'DM Mono',monospace;font-size:11px;opacity:0.7;}
+  .issue-body{padding:0;}
+  .issue-row{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--border);}
+  .issue-row:last-child{border-bottom:none;}
+  .issue-label{padding:10px 14px;background:var(--alt);font-weight:500;font-size:12px;color:var(--text-mid);}
+  .issue-val{padding:10px 14px;font-size:12px;color:var(--text-mid);line-height:1.6;}
+  .issue-val ul{margin:4px 0 0 16px;}
+  .issue-val li{margin-bottom:3px;}
+
+  /* OKR CHIPS */
+  .okr{display:flex;flex-direction:column;gap:4px;margin-top:4px;}
+  .okr-chip{background:var(--teal-bg);color:var(--teal);padding:4px 10px;border-radius:4px;font-size:11px;font-weight:500;}
+
+  /* SEGMENTATION */
+  .seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+  .seg-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .seg-card-hdr{padding:10px 14px;font-weight:600;font-size:12px;}
+  .seg-card-hdr.t1{background:var(--teal-bg);color:var(--teal);}
+  .seg-card-hdr.t2{background:var(--amber-bg);color:var(--amber);}
+  .seg-card-hdr.t3{background:var(--red-bg);color:var(--red);}
+  .seg-card-body{padding:10px 14px;}
+  .seg-dim{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;}
+  .seg-dim:last-child{border-bottom:none;}
+  .seg-dim .d-label{color:var(--text-muted);}
+  .seg-dim .d-val{font-weight:500;color:var(--text);text-align:right;max-width:200px;}
+  .w-badge{font-size:10px;background:var(--border);color:var(--text-muted);padding:1px 6px;border-radius:10px;margin-left:4px;}
+
+  /* SCORE TABLE */
+  .score-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:16px;}
+  .score-table th{background:var(--sub);color:var(--sub-fg);padding:7px 10px;font-weight:500;text-align:left;}
+  .score-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+
+  /* ACTION ITEMS */
+  .action-row{display:grid;grid-template-columns:1fr 120px 90px 80px;gap:0;border-bottom:1px solid var(--border);padding:8px 10px;align-items:center;}
+  .action-row:last-child{border-bottom:none;}
+  .action-row.hdr{background:var(--hdr);color:var(--hdr-fg);font-weight:500;font-size:11px;letter-spacing:0.04em;}
+  .pri.high{color:var(--red);font-weight:600;}
+  .pri.med{color:var(--amber);font-weight:600;}
+
+  /* STRATEGY STATUS */
+  .strat-row{display:grid;grid-template-columns:160px 1fr 100px;gap:0;border-bottom:1px solid var(--border);padding:8px 10px;align-items:start;font-size:12px;}
+  .strat-row.hdr{background:var(--sub);color:var(--sub-fg);font-weight:500;font-size:11px;}
+  .status-pill{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;}
+  .status-pill.testing{background:var(--amber-bg);color:var(--amber);}
+  .status-pill.new{background:var(--teal-bg);color:var(--teal);}
+  .status-pill.implementing{background:#E6F1FB;color:#185FA5;}
+  .status-pill.progress{background:var(--border);color:var(--text-muted);}
+
+  /* OVERFLOW SCROLL */
+  .table-wrap{overflow-x:auto;}
+
+
+  @media(max-width:640px){
+    .hero h1{font-size:28px;}
+    .mg,.g2,.g3,.rg,.skills-g,.about-g,.sg{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Michael <span>Ukaegbu</span></div>
+    <div class="nl">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="https://www.linkedin.com/in/michael-ukaegbu/" target="_blank">LinkedIn</a>
+      <a href="mailto:ukaegbu12@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-tag">GTM and Marketing Operations</div>
+    <h1>I run marketing ops and build the tools that make it permanent.</h1>
+    <p>At Netcompany I own the CRM, run pipeline tracking, and manage GTM ops. Outside of that I build custom tools: a live deployed app, interactive Excel ops infrastructure, and Retool dashboards in progress. SQL and data analytics through BrainStation, currently in progress.</p>
+    <div class="hero-meta">
+      <span>London, UK</span>
+      <span><strong>Senior Marketing Consultant, Netcompany</strong></span>
+      <span>BrainStation Data Analytics, in progress</span>
+    </div>
+  </div>
+
+  <section id="work">
+    <p class="slabel">Work</p>
+
+    <!-- CASE STUDY 1 -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-row">
+          <div>
+            <div>
+              <span class="pill ops">GTM operations</span>
+              <span class="pill data">Data analysis</span>
+              <span class="pill crm">CRM</span>
+              <span class="pill strat">Diagnosis</span>
+            </div>
+            <h2>I diagnosed a 48k event programme that was generating zero pipeline</h2>
+            <p class="meta">B2B tech consultancy, UK GTM team, 2026 &nbsp;&middot;&nbsp; Built from scratch, in active use</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="anon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px"><circle cx="8" cy="8" r="7" stroke="#854F0B" stroke-width="1.5"/><path d="M8 5v4M8 11v.5" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>This is from a real engagement. The company name has been removed and the numbers have been replaced with similar but fictionalised figures that reflect the same problems and patterns. The tools, methodology, and structure are exactly as I built them.</span>
+        </div>
+
+        <p class="sit">The UK GTM team had run 11 events and spent around 48k with zero opportunities created. Nobody had looked at the data properly. I built a full operational infrastructure from scratch: a live dashboard, an event scorecard tracker with auto-calculating metrics, an issue log with OKRs, and a contact segmentation framework. Click through all four below.</p>
+
+        <p class="sub">Where things stood</p>
+        <div class="mg">
+          <div class="mc red"><p class="ml">Blended CPL</p><p class="mv">683</p><p class="ms">Target: under 400</p></div>
+          <div class="mc red"><p class="ml">CRM-linked CPL</p><p class="mv">6,886</p><p class="ms">Per verified lead</p></div>
+          <div class="mc red"><p class="ml">Opportunities created</p><p class="mv">0</p><p class="ms">From ~48k spend</p></div>
+          <div class="mc amb"><p class="ml">Follow-up rate</p><p class="mv">51%</p><p class="ms">Target: 80%+</p></div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">The tools I built</p>
+
+        <div class="tools-box">
+          <div class="tools-box-head"><p>Fictionalised data, real structure. Built in Excel across four connected tabs.</p></div>
+          <div class="tools-inner">
+
+
+<div class="tool-nav">
+  <div class="tn active" onclick="showTool('dashboard',this)">Live ops dashboard</div>
+  <div class="tn" onclick="showTool('tracker',this)">Event scorecard tracker</div>
+  <div class="tn" onclick="showTool('issues',this)">Issue log &amp; OKRs</div>
+  <div class="tn" onclick="showTool('segmentation',this)">Segmentation framework</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     DASHBOARD
+═══════════════════════════════════════════════════════ -->
+<div class="tool active" id="tool-dashboard">
+
+  <p class="sec">Key metrics — YTD 2026</p>
+  <div class="metric-row">
+    <div class="mc g"><p class="lbl">Events completed</p><p class="val">11</p><p class="sub">Target: &gt;18 FY</p></div>
+    <div class="mc a"><p class="lbl">Total spend (£)</p><p class="val">£48,200</p><p class="sub">Against FY budget</p></div>
+    <div class="mc r"><p class="lbl">Follow-up rate</p><p class="val">51%</p><p class="sub">Target: 80%+</p></div>
+    <div class="mc r"><p class="lbl">Cost per lead (£)</p><p class="val">£683</p><p class="sub">Target: &lt;£400</p></div>
+    <div class="mc r"><p class="lbl">CRM leads</p><p class="val">7</p><p class="sub">Target: &gt;25 Q2</p></div>
+    <div class="mc r"><p class="lbl">Opportunities created</p><p class="val">0</p><p class="sub">Target: &gt;6 Q2</p></div>
+    <div class="mc r"><p class="lbl">CRM-linked CPL (£)</p><p class="val">£6,886</p><p class="sub">Per verified CRM lead</p></div>
+    <div class="mc r"><p class="lbl">Pipeline value (£)</p><p class="val">£0</p><p class="sub">Target: &gt;£300k Q2</p></div>
+  </div>
+
+  <p class="sec">This week — decisions &amp; actions needed</p>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px;">
+    <div class="action-row hdr"><div>Item</div><div>Owner</div><div>Due</div><div>Priority</div></div>
+    <div class="action-row"><div>Agree SQL definition with commercial teams</div><div style="color:var(--text-mid)">Ops Lead</div><div style="color:var(--text-mid)">30/04/26</div><div class="pri high">High</div></div>
+    <div class="action-row"><div>Post-event handover section — add to briefing doc</div><div style="color:var(--text-mid)">Marketing</div><div style="color:var(--text-mid)">15/04/26</div><div class="pri high">High</div></div>
+    <div class="action-row"><div>48hr check-in process — introduce for all upcoming events</div><div style="color:var(--text-mid)">Sales Lead</div><div style="color:var(--text-mid)">15/04/26</div><div class="pri high">High</div></div>
+    <div class="action-row"><div>Event value assessment framework — first draft</div><div style="color:var(--text-mid)">Ops Lead</div><div style="color:var(--text-mid)">30/04/26</div><div class="pri med">Medium</div></div>
+  </div>
+
+  <p class="sec">Open issues</p>
+  <div class="table-wrap" style="margin-bottom:20px;">
+    <table>
+      <tr><th>#</th><th>Issue</th><th>Root cause</th><th>Owner</th><th>Priority</th><th>Due</th><th>Status</th></tr>
+      <tr><td style="font-family:'DM Mono',monospace;font-size:11px;">I1</td><td>CPL £683 — zero opps from £48k spend</td><td>Wrong event mix. Database underutilised.</td><td>Marketing</td><td><span class="rag r">High</span></td><td>30/06/26</td><td><span class="rag a">Open</span></td></tr>
+      <tr><td style="font-family:'DM Mono',monospace;font-size:11px;">I2</td><td>Follow-up rate 51% — target 80%+</td><td>No handover process. SQL definition missing.</td><td>Sales + Mktg</td><td><span class="rag r">High</span></td><td>30/04/26</td><td><span class="rag a">Open</span></td></tr>
+      <tr><td style="font-family:'DM Mono',monospace;font-size:11px;">I3</td><td>CRM data quality — reg 48%, FU 22%</td><td>No accountability for field completion.</td><td>All Users</td><td><span class="rag r">High</span></td><td>Ongoing</td><td><span class="rag a">Open</span></td></tr>
+      <tr><td style="font-family:'DM Mono',monospace;font-size:11px;">I4</td><td>No post-event handover process</td><td>Roles undefined between marketing and sales.</td><td>Marketing</td><td><span class="rag r">High</span></td><td>15/04/26</td><td><span class="rag a">Open</span></td></tr>
+      <tr><td style="font-family:'DM Mono',monospace;font-size:11px;">I5</td><td>Event mix too conference-heavy</td><td>High CPL, low conversion at large events.</td><td>Ops Lead</td><td><span class="rag a">Medium</span></td><td>30/06/26</td><td><span class="rag a">Open</span></td></tr>
+    </table>
+  </div>
+
+  <p class="sec">Strategy status</p>
+  <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+    <div class="strat-row hdr"><div>Area</div><div>Current approach</div><div>Status</div></div>
+    <div class="strat-row"><div style="font-weight:500;">Event selection</div><div style="color:var(--text-mid)">Pausing new external events above £5k without value assessment sign-off</div><div><span class="status-pill testing">Testing</span></div></div>
+    <div class="strat-row"><div style="font-weight:500;">Event mix</div><div style="color:var(--text-mid)">Shifting toward owned events — min 2 owned per quarter from Q2</div><div><span class="status-pill new">New direction</span></div></div>
+    <div class="strat-row"><div style="font-weight:500;">Database retargeting</div><div style="color:var(--text-mid)">Existing contact database as primary audience for owned events and webinars</div><div><span class="status-pill new">New direction</span></div></div>
+    <div class="strat-row"><div style="font-weight:500;">Follow-up process</div><div style="color:var(--text-mid)">Standardised 48hr check-in + roles defined in event briefing template</div><div><span class="status-pill implementing">Implementing</span></div></div>
+    <div class="strat-row"><div style="font-weight:500;">SQL definition</div><div style="color:var(--text-mid)">Agreeing shared MQL/SQL definition between marketing and sales teams</div><div><span class="status-pill progress">In progress</span></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     EVENT TRACKER
+═══════════════════════════════════════════════════════ -->
+<div class="tool" id="tool-tracker">
+  <p class="sec">Event scorecard — one row per event · calculated columns auto-update</p>
+  <div class="table-wrap" style="margin-bottom:20px;">
+    <table>
+      <tr><th>Event name</th><th>Type</th><th>GTM team</th><th>Date</th><th>Stage</th><th>Cost (£)</th><th>Attendees</th><th>Follow-ups</th><th>CRM leads</th><th>Opps</th><th>CPL (£)</th><th>Cost/lead (£)</th><th>Follow-up %</th><th>Ext/Owned</th></tr>
+      <tr><td>Fintech Innovation Roundtable</td><td>Roundtable</td><td>Financial Services</td><td>04/03/26</td><td>Complete</td><td>3,200</td><td>9</td><td>5</td><td>1</td><td>0</td><td>355</td><td>3,200</td><td><span class="rag a">56%</span></td><td>External</td></tr>
+      <tr><td>GovTech Spring Conference</td><td>Conference</td><td>Public Sector</td><td>07/03/26</td><td>Complete</td><td>5,500</td><td>3</td><td>2</td><td>1</td><td>0</td><td>1,833</td><td>5,500</td><td><span class="rag a">67%</span></td><td>External</td></tr>
+      <tr><td>Healthcare Ops Briefing</td><td>Owned</td><td>Healthcare</td><td>11/03/26</td><td>Complete</td><td>4,800</td><td>12</td><td>9</td><td>0</td><td>0</td><td>400</td><td>—</td><td><span class="rag g">75%</span></td><td>Owned</td></tr>
+      <tr><td>Retail Transformation Summit</td><td>Conference</td><td>Retail</td><td>13/03/26</td><td>Complete</td><td>6,100</td><td>8</td><td>4</td><td>0</td><td>0</td><td>763</td><td>—</td><td><span class="rag r">50%</span></td><td>External</td></tr>
+      <tr><td>CyberSec Leaders Briefing</td><td>Owned</td><td>Financial Services</td><td>18/03/26</td><td>Complete</td><td>11,900</td><td>11</td><td>10</td><td>3</td><td>0</td><td>1,081</td><td>3,967</td><td><span class="rag g">91%</span></td><td>Owned</td></tr>
+      <tr><td>Data Leaders Webinar</td><td>Webinar</td><td>Cross-sector</td><td>21/03/26</td><td>Complete</td><td>0</td><td>18</td><td>0</td><td>0</td><td>0</td><td>—</td><td>—</td><td><span class="rag r">0%</span></td><td>Owned</td></tr>
+      <tr><td>Public Sector Innovation</td><td>Conference</td><td>Public Sector</td><td>26/03/26</td><td>Complete</td><td>16,700</td><td>9</td><td>0</td><td>0</td><td>0</td><td>1,856</td><td>—</td><td><span class="rag r">0%</span></td><td>External</td></tr>
+      <tr><td>HR Tech Summit</td><td>Conference</td><td>HR</td><td>22/04/26</td><td>Planning</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>External</td></tr>
+      <tr><td>Fintech Growth Forum</td><td>Conference</td><td>Financial Services</td><td>29/04/26</td><td>Planning</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>External</td></tr>
+      <tr style="font-weight:600;"><td>TOTALS / AVERAGES</td><td>—</td><td>—</td><td>—</td><td>—</td><td>£48,200</td><td>70</td><td>30</td><td>5</td><td>0</td><td>£683 avg</td><td>£6,886 avg</td><td>51% avg</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <p class="sec">Performance by GTM team — auto-calculated from scorecard above</p>
+  <div class="table-wrap">
+    <table>
+      <tr><th>GTM team</th><th>Events run</th><th>Ext / owned mix</th><th>Total spend (£)</th><th>Attendees</th><th>CRM leads</th><th>Opps</th><th>Avg CPL (£)</th><th>Avg follow-up %</th></tr>
+      <tr><td>Financial Services</td><td>2</td><td>1 Ext / 1 Owned</td><td>15,100</td><td>20</td><td>4</td><td>0</td><td>718</td><td><span class="rag a">74%</span></td></tr>
+      <tr><td>Public Sector</td><td>2</td><td>2 Ext / 0 Owned</td><td>22,200</td><td>12</td><td>1</td><td>0</td><td>1,845</td><td><span class="rag r">34%</span></td></tr>
+      <tr><td>Healthcare</td><td>1</td><td>0 Ext / 1 Owned</td><td>4,800</td><td>12</td><td>0</td><td>0</td><td>400</td><td><span class="rag g">75%</span></td></tr>
+      <tr><td>Retail</td><td>1</td><td>1 Ext / 0 Owned</td><td>6,100</td><td>8</td><td>0</td><td>0</td><td>763</td><td><span class="rag r">50%</span></td></tr>
+      <tr><td>Cross-sector</td><td>1</td><td>0 Ext / 1 Owned</td><td>0</td><td>18</td><td>0</td><td>0</td><td>—</td><td><span class="rag r">0%</span></td></tr>
+      <tr style="font-weight:600;"><td>ALL TEAMS</td><td>7</td><td>4 Ext / 3 Owned</td><td>£48,200</td><td>70</td><td>5</td><td>0</td><td>£683</td><td>51%</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ISSUE LOG
+═══════════════════════════════════════════════════════ -->
+<div class="tool" id="tool-issues">
+
+  <div class="issue-card">
+    <div class="issue-hdr"><span>Issue 01 — CPL and ROI</span><span class="id">I1</span></div>
+    <div class="issue-body">
+      <div class="issue-row"><div class="issue-label">Finding</div><div class="issue-val">Blended CPL is £683 and cost per CRM lead is £6,886 against £48,200 total spend YTD with zero opportunities created in 2026.</div></div>
+      <div class="issue-row"><div class="issue-label">Root cause</div><div class="issue-val">Event selection weighted toward large external conferences where the company is one of many exhibitors — low attendee-to-lead conversion, poor lead quality. Existing contact database underutilised — money spent acquiring new contacts at high cost when warm contacts already exist.</div></div>
+      <div class="issue-row"><div class="issue-label">Immediate action</div><div class="issue-val">Pause or minimise new external conference spend. No new external event commitments above £5k without event value assessment sign-off.</div></div>
+      <div class="issue-row"><div class="issue-label">Strategic shift</div><div class="issue-val">Shift event mix toward owned events and webinars targeting existing warm contacts. Audit and segment existing database by vertical, seniority, and engagement. Build Q3 owned event calendar before committing further budget.</div></div>
+      <div class="issue-row"><div class="issue-label">Key results</div><div class="issue-val"><div class="okr"><span class="okr-chip">Reduce blended CPL from £683 to under £400 by December 2026</span><span class="okr-chip">Increase owned events and webinars to 40% of total activity by Q3 2026</span><span class="okr-chip">Increase existing database contacts in event invite lists to 60% by Q2 2026</span></div></div></div>
+      <div class="issue-row"><div class="issue-label">Status</div><div class="issue-val"><span class="rag a">Open — In Progress</span></div></div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <div class="issue-hdr"><span>Issue 02 — Follow-up rate</span><span class="id">I2</span></div>
+    <div class="issue-body">
+      <div class="issue-row"><div class="issue-label">Finding</div><div class="issue-val">Follow-up rate is 51% against a required minimum of 80%. Rate lower for group-run events and newer GTM teams. One event had 20 attendees and zero follow-ups.</div></div>
+      <div class="issue-row"><div class="issue-label">Root cause</div><div class="issue-val">No standardised handover process between marketing and sales post-event. Roles and responsibilities not clearly defined at event kick-off. Misalignment between what marketing classifies as MQL and what GTM teams consider worth following up.</div></div>
+      <div class="issue-row"><div class="issue-label">Immediate action</div><div class="issue-val">Implement mandatory 48-hour post-event check-in for all events. No event closes without a follow-up rate logged in the tracker.</div></div>
+      <div class="issue-row"><div class="issue-label">Strategic shift</div><div class="issue-val">Develop standardised post-event handover process embedded into existing event briefing document. Establish agreed SQL definitions between marketing and all GTM teams.</div></div>
+      <div class="issue-row"><div class="issue-label">Key results</div><div class="issue-val"><div class="okr"><span class="okr-chip">Increase follow-up rate from 51% to 80% by end of Q2 2026</span><span class="okr-chip">Reduce time from event end to first follow-up contact to under 48 hours from April 2026</span><span class="okr-chip">Achieve agreed SQL definition between marketing and all GTM teams by end of April 2026</span><span class="okr-chip">Achieve 100% CRM logging compliance within 5 days of each event</span></div></div></div>
+      <div class="issue-row"><div class="issue-label">Status</div><div class="issue-val"><span class="rag a">Open — In Progress</span></div></div>
+    </div>
+  </div>
+
+  <div class="issue-card">
+    <div class="issue-hdr"><span>Issue 03 — CRM data quality</span><span class="id">I3</span></div>
+    <div class="issue-body">
+      <div class="issue-row"><div class="issue-label">Finding</div><div class="issue-val">Registration field completeness at 48%. Follow-up status field completeness at 22%. Reporting is unreliable and pipeline attribution is impossible without clean data.</div></div>
+      <div class="issue-row"><div class="issue-label">Root cause</div><div class="issue-val">No accountability structure for CRM field completion. Users not clear on which fields are mandatory or why they matter for downstream reporting.</div></div>
+      <div class="issue-row"><div class="issue-label">Key results</div><div class="issue-val"><div class="okr"><span class="okr-chip">100% CRM logging compliance within 5 days of each event</span><span class="okr-chip">Registration field completeness to 80%+ by Q2 2026</span></div></div></div>
+      <div class="issue-row"><div class="issue-label">Status</div><div class="issue-val"><span class="rag a">Open — ongoing tracking</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SEGMENTATION FRAMEWORK
+═══════════════════════════════════════════════════════ -->
+<div class="tool" id="tool-segmentation">
+
+  <p class="sec">Scoring dimensions — five weighted criteria</p>
+  <div class="table-wrap" style="margin-bottom:20px;">
+    <table>
+      <tr><th>Dimension</th><th>Weight</th><th>Tier 1 — Priority</th><th>Tier 2 — Warm</th><th>Tier 3 — Cold</th><th>Action</th></tr>
+      <tr><td style="font-weight:500;">Vertical</td><td><span class="rag g">30%</span></td><td>Financial Services, Healthcare</td><td>Public Sector, Retail</td><td>Logistics, Other</td><td style="color:var(--teal);font-size:11px;">Always invite to owned events</td></tr>
+      <tr><td style="font-weight:500;">Seniority</td><td><span class="rag g">25%</span></td><td>C-suite, Director, VP</td><td>Head of, Senior Manager</td><td>Manager, Other</td><td style="color:var(--teal);font-size:11px;">Tier 1: personalised invite from senior stakeholder</td></tr>
+      <tr><td style="font-weight:500;">Engagement history</td><td><span class="rag a">20%</span></td><td>Attended 2+ events in 12m</td><td>Attended 1 event in 12m</td><td>No events in 12m</td><td style="color:var(--teal);font-size:11px;">Tier 3: nurture sequence before invite</td></tr>
+      <tr><td style="font-weight:500;">Relationship status</td><td><span class="rag a">15%</span></td><td>Active account contact</td><td>Past prospect, met at event</td><td>Database only</td><td style="color:var(--teal);font-size:11px;">Tier 1: account team coordinates</td></tr>
+      <tr><td style="font-weight:500;">Data completeness</td><td><span class="rag r">10%</span></td><td>Full record — all fields</td><td>Partial — 60%+ complete</td><td>Under 60% complete</td><td style="color:var(--teal);font-size:11px;">Tier 3: hygiene pass before outreach</td></tr>
+    </table>
+  </div>
+
+  <p class="sec">Score bands — invite priority and channel by band</p>
+  <div class="table-wrap" style="margin-bottom:20px;">
+    <table class="score-table">
+      <tr><th>Score</th><th>Band</th><th>Description</th><th>Owned event invite</th><th>Webinar invite</th><th>Nurture first</th></tr>
+      <tr><td style="font-weight:600;">80–100</td><td><span class="rag g">Priority</span></td><td>Tier 1 across majority of dimensions</td><td>Yes — personalised</td><td>Yes</td><td>No</td></tr>
+      <tr><td style="font-weight:600;">60–79</td><td><span class="rag g">Warm</span></td><td>Mix of Tier 1 and Tier 2</td><td>Yes — standard invite</td><td>Yes</td><td>No</td></tr>
+      <tr><td style="font-weight:600;">40–59</td><td><span class="rag a">Developing</span></td><td>Mostly Tier 2, some Tier 3</td><td>Case by case</td><td>Yes</td><td>Recommended</td></tr>
+      <tr><td style="font-weight:600;">&lt;40</td><td><span class="rag r">Cold</span></td><td>Predominantly Tier 3</td><td>No</td><td>No</td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <p class="sec">Strategic rationale</p>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.75;">The segmentation framework was built to solve Issue I1 directly — specifically the finding that the existing warm contact database was being ignored while budget was spent acquiring new contacts at £6,886 per CRM-linked lead. By scoring and tiering the existing database across five dimensions, the framework enables owned events and webinars to be targeted at Priority and Warm contacts without any new acquisition spend. The data completeness dimension feeds directly into the CRM hygiene workstream — contacts with incomplete records are flagged for a hygiene pass before any outreach, so the segmentation and data quality improvements compound each other.</p>
+  </div>
+</div>
+
+<script>
+function showTool(id, el) {
+  document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tn').forEach(t => t.classList.remove('active'));
+  document.getElementById('tool-' + id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+
+          </div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">What was actually wrong</p>
+        <div class="g2">
+          <div class="fi insight">
+            <h4>Wrong event mix</h4>
+            <p>Over 80% of events were large external conferences where the company was one of hundreds of exhibitors. Low conversion, high cost. The existing warm database was being ignored as an audience while money went on acquiring new contacts at 6,886 per verified lead.</p>
+          </div>
+          <div class="fi insight">
+            <h4>No handover process between marketing and sales</h4>
+            <p>No defined roles post-event. Marketing and sales had different views on what a qualified lead looked like, so valid leads were filed away and never followed up. One event had 20 attendees and zero follow-ups.</p>
+          </div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">What I set out to fix</p>
+        <div class="rg">
+          <div class="rc"><p class="rb">From 683 CPL</p><p class="ra">Under 400 by Dec 2026</p><p class="rd">Shift to owned events and retargeting the existing database</p></div>
+          <div class="rc"><p class="rb">From 51% follow-up rate</p><p class="ra">80%+ by end Q2</p><p class="rd">Standardised 48hr handover with defined roles per event</p></div>
+          <div class="rc"><p class="rb">From 0% owned events</p><p class="ra">40% owned by Q3</p><p class="rd">Minimum 2 owned events per quarter from Q2 onwards</p></div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">What I used</p>
+        <div class="tr">
+          <span class="tt">Excel</span><span class="tt">Microsoft Dynamics</span><span class="tt">Data analysis</span><span class="tt">OKR framework</span><span class="tt">Contact segmentation</span><span class="tt">Root cause analysis</span>
+        </div>
+        <p class="note">Built from scratch and in active use. Targets set Q1 2026, outcomes tracked through Q2. Full workbook available on request.</p>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 2: FIELDNOTE -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-row">
+          <div>
+            <div>
+              <span class="pill build">App build</span>
+              <span class="pill ops">Field ops</span>
+              <span class="pill crm">HubSpot</span>
+              <span class="pill data">AI</span>
+            </div>
+            <h2>FieldNote: I built an app to fix the post-event lead black hole</h2>
+            <p class="meta">Personal project, Lovable + Claude code + Supabase, deployed on Vercel, 2024 to 2025</p>
+          </div>
+          <span class="sbadge live"><span class="sbadge-dot"></span>Live</span>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <p class="sit">Running events for years, I kept seeing the same thing. You have 25 great conversations at a conference, get back Monday, and half those leads are still sitting in a notes app two weeks later. Badge scanners only work if the organiser sets them up. CRM apps are too heavy to open mid-conversation. Most people just use their phone notes app and hope for the best. I built FieldNote to fix that.
+          <blockquote>Started in Lovable, then extended with real React code written through Claude. Not a drag-and-drop prototype: a production app with five working screens, AI pipeline summaries, voice note capture, and a Kanban pipeline view, deployed on Vercel.</blockquote>
+        </p>
+
+        <hr class="l">
+        <p class="sub">The three problems it solves</p>
+        <div class="g3">
+          <div class="fi problem">
+            <h4>Capturing a lead takes too long</h4>
+            <p>Different people use different methods and data ends up scattered everywhere. FieldNote gets a lead captured in under 30 seconds at a noisy event.</p>
+          </div>
+          <div class="fi problem">
+            <h4>Nobody knows who to follow up with first</h4>
+            <p>After a busy event, deciding who to prioritise is a job nobody does well. FieldNote scores automatically from seniority, company fit, and a quick gut-feel tap at the point of capture.</p>
+          </div>
+          <div class="fi problem">
+            <h4>CRM entry gets delayed or skipped</h4>
+            <p>Contacts sit in exports for days. FieldNote syncs straight to HubSpot and creates follow-up tasks by score: Hot gets tomorrow, Warm gets 3 days, Cold gets a week.</p>
+          </div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">Try it live</p>
+        <div class="app-box">
+          <div class="app-box-head">
+            <span class="abt">FieldNote</span>
+            <span class="abm">Live on Vercel. Core screens working. HubSpot sync and enrichment coming next.</span>
+          </div>
+          <div class="app-box-frame">
+            <iframe src="https://pronto-follow.vercel.app/" title="FieldNote app" allow="camera; microphone" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+          </div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">How it was built</p>
+        <div class="g2">
+          <div class="fi build">
+            <h4>Scaffolded in Lovable</h4>
+            <p>Used Lovable to scaffold the React and TypeScript frontend and wire it up to Supabase quickly. Core navigation, capture form, leads list, and pipeline view.</p>
+          </div>
+          <div class="fi build">
+            <h4>Extended with real code through Claude</h4>
+            <p>The Lovable scaffold was extended with actual React component code written through Claude: AI pipeline summary, voice note capture, per-card action suggestions, score-based routing, and the overdue flagging system.</p>
+          </div>
+        </div>
+        <div class="g2">
+          <div class="fi build">
+            <h4>Supabase for data</h4>
+            <p>Handles database, auth, and real-time data across sessions. Foundation for team mode later.</p>
+          </div>
+          <div class="fi build">
+            <h4>Deployed on Vercel</h4>
+            <p>Live production deployment, not a local prototype. Any device, shareable URL, continuous deployment.</p>
+          </div>
+        </div>
+
+        <hr class="l">
+        <p class="sub">What is built and what is next</p>
+        <table class="ft">
+          <tr><th>Feature</th><th>Description</th><th>Status</th></tr>
+          <tr><td>Home digest</td><td>Daily focus: overdue leads, today's follow-ups, weekly stats, debrief prompt</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Lead capture</td><td>Scan or type, name/company/title, Hot/Warm/Cold tap, notes</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Voice note</td><td>AI-powered recording, 20 seconds, AI transcribes and summarises</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Leads screen</td><td>Full list with score badges, status, event tags, search and filter</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Pipeline view</td><td>Kanban: New, Contacted, Follow-up, Closed, with AI summary at top</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Events screen</td><td>Per-event lead counts and conversion metrics</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Overdue flagging</td><td>Leads flagged based on score-driven timing, shown on home and leads screens</td><td><span class="fs built">Built</span></td></tr>
+          <tr><td>Camera capture</td><td>Badge or LinkedIn QR scan, Claude vision fills fields</td><td><span class="fs next">Next</span></td></tr>
+          <tr><td>Prospeo enrichment</td><td>Company size, industry, contact data pulled on capture</td><td><span class="fs next">Next</span></td></tr>
+          <tr><td>Intelligent scoring</td><td>Score combining enrichment signals with the gut-feel tap</td><td><span class="fs next">Next</span></td></tr>
+          <tr><td>HubSpot sync</td><td>Contact, event tag, score, follow-up task pushed to HubSpot instantly</td><td><span class="fs next">Next</span></td></tr>
+          <tr><td>Slack and email alerts</td><td>Overdue follow-up notifications</td><td><span class="fs next">Next</span></td></tr>
+          <tr><td>Auth and accounts</td><td>Supabase auth, data persisting across devices</td><td><span class="fs later">Later</span></td></tr>
+          <tr><td>Team mode</td><td>Multiple users, shared event leads</td><td><span class="fs later">Later</span></td></tr>
+        </table>
+
+        <hr class="l">
+        <p class="sub">Stack</p>
+        <div class="sg">
+          <div class="sc"><p class="sr">Frontend and hosting</p><p class="st">Lovable + Vercel</p><p class="sn">React + TypeScript</p></div>
+          <div class="sc"><p class="sr">Custom code</p><p class="st">Claude-generated React</p><p class="sn">AI summary, voice, routing logic</p></div>
+          <div class="sc"><p class="sr">Database and auth</p><p class="st">Supabase</p><p class="sn">Data persistence, real-time</p></div>
+          <div class="sc"><p class="sr">AI and OCR</p><p class="st">Claude API</p><p class="sn">Vision, voice, summaries</p></div>
+          <div class="sc"><p class="sr">Enrichment (planned)</p><p class="st">Prospeo API</p><p class="sn">Company and contact data</p></div>
+          <div class="sc"><p class="sr">CRM sync (planned)</p><p class="st">HubSpot API</p><p class="sn">Contacts, tasks, event tags</p></div>
+        </div>
+        <div class="tr">
+          <span class="tt">Lovable</span><span class="tt">React + TypeScript</span><span class="tt">Supabase</span><span class="tt">Claude API</span><span class="tt">Vercel</span><span class="tt">HubSpot API</span><span class="tt">Prospeo</span><span class="tt">Product design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs"><h3>BrainStation capstone project</h3><p>A data analytics project built around a revenue operations dataset. SQL, Excel, Tableau applied to a real commercial problem.</p><span class="cs-eta">Coming Q3 2026</span></div>
+    <div class="cs"><h3>Retool dashboard builds</h3><p>Custom revenue operations tools: pipeline visibility, attribution tracking, board-ready reporting, connected to live CRM data.</p><span class="cs-eta">Coming Q3 to Q4 2026</span></div>
+
+  </section>
+
+  <section id="skills">
+    <p class="slabel">Skills and tools</p>
+    <div class="skills-g">
+      <div class="sk"><p class="skl">CRM</p><h3>CRM administration</h3><p>Microsoft Dynamics super-user at Netcompany since 2024. Airtable (Yondr, 2023). Attio (Data Reply, 2022 to 2024). HubSpot in progress through FieldNote integration and self-directed learning.</p></div>
+      <div class="sk"><p class="skl">Data</p><h3>Data analysis</h3><p>Excel, SQL (BrainStation, in progress), Tableau (in progress). Pipeline tracking, CPL and CPO analysis, event performance, attribution work.</p></div>
+      <div class="sk"><p class="skl">Automation</p><h3>Workflow automation</h3><p>Zapier, Prospeo, Apollo.io, Smartlead. Lead enrichment, outbound sequencing, scoring, routing, and follow-up automation.</p></div>
+      <div class="sk"><p class="skl">Building</p><h3>Tool building</h3><p>Lovable, Retool (in progress), Supabase, Vercel. From rapid prototypes to deployed production apps.</p></div>
+      <div class="sk"><p class="skl">GTM</p><h3>GTM operations</h3><p>End-to-end event programme management, pipeline generation, lead routing, post-event process design. 5+ years running GTM campaigns at B2B tech companies.</p></div>
+      <div class="sk"><p class="skl">AI</p><h3>AI in ops</h3><p>Claude API for OCR, voice, scoring, and intelligence layers inside tools. Building AI into workflows where it adds something real, not for the sake of it.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-g">
+      <div class="ab">
+        <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:24px;">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAEsASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8tKKKKgCOTg5qLq1Sy9RUQ+9VIVjv/ggN3xK0dP75kX/x019g+F7NV8Y6XkHabu1yB6GXH4da+QfgMN3xY8Ox4zvuSuP+AmvuHQ9NdfGNgxUnF1Z8f9tq8fMJWrRO/DK9OR0mu+FdM8GfDbxhpOk3WpXKXFhfzyPfXb3Em9omBwW6DAHHtXD/ALNUjXH7OHhNPmxFNfqMf9djn+deqeNWEvhvxFDgEtp14Pr+7evI/wBk+Qy/s6aKN3EWpagg/wC/in+tekn7p88o2g/U+av2iQ6fGDVsrjdb2p59PL4rhrWZTGzAnco4x2NeiftLx7Pi7fsRw9jaOD/wA15rbRu06qhHzHpVfZO2mvdRvjxVrWo6Na6DfXks2n2bk28Dk7ImPUqOgJrsPh14ovPhVqUPjbS7iynvrecQyafcRB/Ohccsucjj3rlPDPhXWvEWof2f4dsze37sGhtEwXkPoB3rpvEGhXthNF4f8RaXc6Pr8Ozzo54gh2njkewNYPRGM+VvlN/VZ9DvxF48+3WdteXc0s7RmIBss3TaBgYz9BityTxB4Y0zTEvLO+gTUdPhQmNm8yS8ZyN6gjgDHGB06ntXO6XfXPwv1rUfC3iLQ9J1X7Tb4t7if5444pEzuXHf+tX/AIR2Pw4v/Huk2vxBDWHh2Wzlt2khBcx3LDCE4Bxknv371zzpOfu9zKSaV3sdFceDvBOp+IZtW1S7vtIiZX1C3giYtGimHK4U/wC2ME4/PNbHhbV10nw9aeMvDOn/ANoa9ZXKT3V2GJWOEnaECd3z04x1PNdp8YPgLD4K8Cahe3J1jWre3hhOh39gqvB5BOXjlIPUA9cV5bdeJbvwX4bkfwBZrBa6r9ne4MgDSJPE24Kue2Rkrj/68+zdG1OZyJqqro+hdJv/AIS6f48s7Hxb4hGhx2tq1/c3EG5ftNzIMkSLyIyMnjFea+N/gpFrvjTxKNC8SC4FkkEo1KGRfs5EpHll+ykAjNeX6PH4nuPEd7478bWeo3elSXQnv7hAB5k0uOXHGU9h0A6V6jpHg3wnBeav4TjuNU1Sx1ee3uHutKnMfk2/3iPLyN+B/KsqiVOOq3e5Dg6bvFmd+0FonifwbrWg+B7/AFCykgs7OK8ur62AcSkfdZtucAV5Z4d0HWdU8YyRtqOIdQbFzcRnC+QxwQueOegr0XUPDradP4jsdCstRv2eWM6XLeSYU2aH5g4bJIxmuZl+Ifi6W9tdKm8OaRaaZJCbCK6tYmbfHkbsc/MR25/OuWM1FuNJK3qa021GxS13wFD4U8ftD4LudR/s6yZLy2viAGjO3nB7gH355rp/CXjfxZ4N1e71LQ7qCa88TuLCVIwHt2AOW55IfrnHPPNUNC8UajpWlaj4Usr63XTYklMrXMBM0qoflQd8nrjrXJwWupwLoK6hHLa6OtxNNHdLHgtlvmyR3HOK6LSqRtIpXludX4wbU9V0vU7rTvAzRWst8wlvLRS5WQDG3gdO547VzNn4i8Ratpktj4u1m7eOGzTyrUwMv7tGwC4HKkgjr1xX0X4Jfw7plv8AbdX13Vo9Gm3SKtm8Zi3EYExVu+CSQf1rzn4ifGfQ9L1yPXIdMt9R0wudLluLaNElvoE6GRGA2tyTuHX2rGjOlOLUN07fMlOXNypHHeEtE8T634r1KC1WCOytof3BCbY2JTng/wAW3muQ1/4tamvhe38G21jGtva3btLNna7hX4UFfp19TXaL8QtC8R65awaJpD2+n3LA3MKTFHaX7qnI44Brhfij8Pn8LPf3qX0a2LTp9limXbO4bk8d8HINVClCtVSrR8/mdNNe8lJGAurW9/ZX89syRTurSSrK+44zxg9zmsC51bUtQt4La9ummitQViBA+UVUVGjJPY809E2DOOK9WNOK1OxQSJrVfmI2luM8CpzENjCUvESuVGPvUtpdQQS5hlaEY27j/EPQ1rNrNg0QFxBHdpEhjXjHJ/wolJp2RRk3Qh+yRCBlIyNw7g+9fqF+wZ8KbLwd+zxp+v3kKjUvG142qTZ4Z4QdsKfQKoP4mvzBvo7WSJp7RCgdGyrH7rV+vfwimni+DPw9gtCVhj8P2OwKvQ+WOnuT1rxc+quOGjBdWejlsb1XLsj1q6jtYbZIY9OaWeEquyQERtu68egFZOoXmk29wkWjiTzQcCOD7i/7JNaA1u5vbQQSxl5fLKSjkEA1zOliSLU7iJIjFtYLCxTChc/e9D6V8ipdD3NjsrK4ubtZEa0T7LJGPPw4LJJ04x1GapW+jrbM2nzZnSdX3L6KRyPyrKg1E6TcXECYLSANIN3CrnLYPf1qWz125mnkWUmNG2tb5zl+ex7VXMiGmz8dfj54Yk8KfFTxRZQWn2fT4tVuI7ZNw4AbpjtXnUas4J3Bee9ew/HbXtH1T4t+O9Wu7WW4nn1e5jhV3+VDkDcPxBryqPhRkqD37V+gYabdGLlvZHy81abSOGooorvGRy9RUQ+9U0oGM1F3FUgPRP2fQG+MvhFG6PqCr+YNfodYaRs8ZWqgHAurE9OR/pGK/O34CsE+MvgwscD+14AfxbFfpzEmnp43eOTY6LPYrjPY3JB/nXgZq7VY+n6np4JXpyMnxIhl0/XoGHW1u0Pr9168c/ZEZm/Z5gjxnZrd6o/EpX0PdeE7i9fUrC3hH72O7iUE9AA4FeH/ALGOgXF78A7hUG7yfEd5EwHUY2V6kZr2dz55waTXmfNv7USY+LEuM86Za9fbcK8ysY2kmVEQszcAAZJr2T9r6wl074xLBPGV3aRbMPf53Ga8r0C7m03UrXUbXYJrWZZULKGGRzgg9QfStYv3EzphdQRoeFtV1Twzr1hrWlzTW93Z3CzQvExDBgeRkc+2K7/x/wCKNa+KevzeNdX3f8JDJKoLquEMSjCjHqOc1zjXralr58Q3lvbpcXdz57xwptjBJ5wvav08/Yo/Zh+GPi74T6n4x8S6PDqGp6zdyQpPKgYQRhVI2KRwcscn2rhq1HDYapqcubqflzq2j3SwLLqFwzyA7ZGkYkj29RVNY9f06yc2EskdjeMIzwD83Xj06V6x8dfCNn4Y8XeJNHnLrLZXEiQpFwv3jtyD7fzryXV57m1itbYSy+WqK5j3HbuHf61pSl7SNwnG2h6B4f8Ai74w8Iq9lovinVEs5LUwSWU7+bCA4+bbG3yqc9CMGuv17xFpV1DoN/4K0a4NvdmLTruO4iYqNR4PmY6AtnAUdcV474evdOTWI9U1i2a6gXG+MHGfT8BXt+tftJ6Fr0uhXV54MttKj0kwTXEenqB9ouYRiKaMH5QRwTu/Xir9nH7TPPr0mpLkibH/AAivj0y23gE2DR3lrcvfBHdR95c7TGeSBnIB6V5ta22v2/iLUtQh8WXUE8dhNF5qy+SC6nBjwOMY4x3rc1T45WPjfxxp3in4l6Pd3N/b/aJpdQ0yX7PJMrJtiTAOAAOprH0vxb4WnuntvFK+VBK32mGWQ/c9AepY8j8q48TenG8NTJRnFWkjb8I6v4kuPHGk/ZryS5m1CyaylMibo4nKld+0nk4/CtTxR4wn0vwno83iDw5C8UF1c2lhLsWPzVibazgqSVbIzjA/lXi3iu61CfUkmtHlt4XGyKSJmTzWUnDDoQcYrO1Oz1PSI7VdQtryWGH54hMHXKNySuexPpWNDDRaVWe5pGl1Z6npuv8AgXUINKtF1S6sLy31SS+u5p4d4aMjjawyT9PrWVceIL/XfEV3bWNxLLo6SzbEQYXae4UnCgn0x171neL/AAa/gy/0i1h1ixmbVtPS9fy5N4tFk5CsfWtf4f6Vrug+Ib2WDS7HX7WFVijffviEsi5UnHOAO3611v3RuKtzJnOeIdeisdEbwnYXt99juJC9zG2VAf8A2T3H6VXn0KPxR4bgk8PwXl1dQ4juGlIChhxn8u9WPHWlGyvrC2v7iBp13+YqABVYknaMVQs21OygisLaKWytVuFN6I5uqkjBx9D3qYRVrxRo7RScTntEmm8N6rImopKhjJUgHG2VehyPSt7xL8SdW8T276b4sRb62Kfu2CbJo5AOHznByOD+de1zeFfDt/4t09tesrbQdMCRzbJgGF06ryc/7XWvIvjNc6Jd+NLmDR9KjtvKIDtGfkcdiB9KlVoVayTXzHTmpzWmp53DAzMATkAcDvVg2zKiuxOD0ANdR4G+HXin4jai2ieC9In1TUGUMsEC7jgnGT6D3r6U0v8A4Jp/HG60Zrq51jSoL1Yw5sSSW3Hnbu6VvVxlGhLlnKx3whOp8KufHUke4HJwMenSo4YyvC9OuK9A+Jvwa+I3wl1P+yfH/hW70qRsiKWRd0Mwz1Rxwfp1rhUjkt5GLqemRxxXRCcakeaL0JaadmWvNiMaRysfvcjHWv1L/ZA8ZSePf2c9G0+3vE+26EG0x2YjMbxN8vvgoVIr8p5yMo+eOuK92/ZR/aEn+Bni6ddaMkvhjXdkV/Eo3NbuOFnVe+OjDqR05Fedm+EeKw3ubrU6sFiFQq+9sz9WrAvHCsmrvudlxK8QznGcZP1rEtHuo5ZkubhxE7FgSQd0eemM8VB4T8b6X4j06HUdL1K1vtNvlEsM8LBkkTHDAj+VJqc9reO8rRCcxjCBH5JJ9uo9q+F5HF2aPoU1LYt3txpIS5Ee528pcORjHsPWuM1/4j2nw88Daj4o8TSgNF+5tIyNzO75CRqPXJpnivxlonhTR7jXPFuo2+jaZarnfI2M47YPJPXAr4a+Jvxg8R/tH+ObbSPC8cmneFdJlY2ofIZ3wf38g7E4+Uds16OBwM8VNP7K3ZzYqvGhBrqeJfE+2vrr4i6qbq3EVxdXRfy0OQC3P/16hHhOAqrDUYnyOeQcH061P8RJbiHxpcNfS5uI9geRTkkgY3D61kWqxSQK2wjPq+K+w1UUkfP7nm1FFFeiAyX7tQ/xVNL92of4qpAdf8J7j7L8TPC1xnHl6rbt/wCPiv0an1kHxVJIpOPtFnj8LnrX5q+BpTD4w0SUdV1CE/8Ajwr77l1FY9YeUgjBt39xiYV4maQvOLPQwLtGSPoJfEUlnq17t58prgAepO6vAP2JNeltPhFrtmoH7vxVd5GPVVNeryGZdZ1XzJ2lElxLIgZQvlq38PHX8fWvDv2Mnx4A8W2nGYvFc4490H+Fd8Ie59x4cpP3vU8o/bWvH1H4wWl0y7T/AGNEvTqBI9eHWcskVzG0ZOQwwPU17R+10M/E7TmxjfpIHPtKwrxyygdtQt/LUufNXgd+a2irRSN4O8Udl4c0q71a9u0vw9m3lmRJGQ+WpHOCewxX3J+xN+1D4n8E6XqPwyMRvdOtYZL6Exxh5Yn2jdj1BwODnpXxFb+LdcN5eaMsqxpMnkYdPmUZ/nXpHwEuToevazew6teacP7JniM1s4yGHTOSOM+lediYe0RVOUlLUy/id4qPjPVtQv7l2aSa/muBI4w5DMeDXDalp0zWi3UqxiIxBc7gWbntVm3FrqcrrqF95SMJH3vkhm5xyOck/wA6qXT5SFZUd4oovJ3jmuihDkSQpaszLVfs5H7oOmMEHtmtefS5dX8NXOqWkVtBBpciq+6ULJJu6AL3qvdWSW9xbx210JY3jDMD0Un+Go7lnmuE020tHRW4AI+83qa2ZDv0K9rdXInb5kaNUwqFcgewrTuLfT5I9PdriK7uZyDsjJ/cZPAIPv2rpYfhTr2pfDrUPiPYahbRJpN19murUsBIOM7vyrmdM0kxti7tpSwwQyn7oI4PvWM0m7kO0r26Hpt54G1XVtLvfFGp2Jt7XRWz5byJGm0KM7WPf0rh/EWt3eua3bvp1/ql1ptsiRWiXwErwRjHykDqAc9areI7vUdchU3WpTzbxtaDJCKy4GSucZIGc4zWr4E0TX75Wg0nyoppGMUrScMYz3APXB54rGEXFamUYNayINW0jWZ9DB1O3hkuJZneCdRslCDqrjsMdK527nv9Ku7SA3kunofLaQ2sp3bc4LcHkgZrsbuOX+17zw/rV/8AbJ7WRo1dnO4uRxyOv0rz2x0uXVdSkgDLEsZKgSNjkHkCnBXubKKaO3+IWh+DrCZl8F+J7vW57RhKlxIn7p4CoKlc8lg2QR7VzGl2dxaQTTaoZFvb0B4kH8Zzyrjt7VYn0qSyvfsVvqtoJYkG14nzjJ6fWrtx4V1y5urjV7CVtTgtFE87KMsEXGWx/dBrRInlSVmehaB8T7fS9GtJtT8P/wBpWdvL5D2l4C7OrDna3YZ7dBxVt7n4eXP2K9v/AATcHxPr2oLp0dqAWFmGfbEwXA37sgeo/CuY0Dxe3iLUra4tNDgglsFDkRf6lxwMlD0Jr1b4A26eNP2pfB0eqRI9ot/JeEypsdZIoHZUI7YI4+ledWXsryS2M6dJTqqO1z9DPgD8C/AHwS8N2mneHNHtRq9zCsmoXYUB5ZduWyx5AB6KK9BSRxfXt/br9pkZA6gcKp6EVQtbd5JjcXeoQLsBeNI+cnBHNU7PVYdOnuJ724RWYCIQMSN3f8a+QdWVWXPN3bPradONJcsTF+Kvwv8ADnxt+HuoeDvGGjxD7dFJ9nkcgvbyj7siN25xX4meOPCWreCPGeteC9cU/a9FvJbOQ44YIeG+hGD+NfurcTSy3C38NyonmIWKDH3SR09q/Kj9uTwZqP8Aw094sv7azb7HMLR3Ma5xIYhu4Hevo8hnUc5U1qrHFmEIxip9T5fvbcwvECB8/I+lOJk8xW+UgDHpires2t5DeiK4geNI/lj3dxVGOTa+yTgOfmx6V9RZ2PK3O9+GPxF+IPw1uJZfB3jO+01WBc2SNvhlb/rm3y/livTL39t79ouKzNtHrWjwDlTOmlp5vT1zj9K8LsZTA3mK5zHyrAdDUlytzNaNIpBWT7w9T6150sPSq1OacUzeFapBWi9DZ8TfEHxj8Rbg6j458T3+rzA7kE8v7uM/7KD5R+VZWj+JNX8OTzy6JdvA9xE0MmOjKazbJXMpg/vA59q0rKwtpkuXuXdWSMiGNBlpHyAoGOvXit+SFL3UrIG3PVmLqQna58yed5pCo3O7ZJqEXU0ahEYgAetfbXwe/wCCbPjLx4lr4j+IGpN4b0u6gjmi09Rm7+ZesnZP93r6+leh6p/wSs8KSXZOm/EW7iiAwUliyQ3fnNck80w1N8jZtDC1ZK6R+WFFFFewcwyX7tQ/xVPIMrUJz2poDV8MP5fiLSpP7t5Ef/HhX3PPdgXLyFslo4T064kBr4S0N9msWD/3bmM/+PCvtia5+fzAf+XePg9fvCvLzJNuJ3YPqfTtvod9qOpT3MEINtLZJeNKzbSrEj5Np5yefyrwb9iTRLvUtA+JUVsy4svFLs2e3DAfyr2201C5a7SVZmzNawqctnjaOK8C/Y71O6028+KlhbTyRA+JTlVbGQTIP6V001JU2eQ3G8rnnH7Z+l3OlfE3Sbe7AEn9mPnB4/1v/wBevGtFb/iY2zqcMsqkYPv2r2f9sdp7jxpoFzcSM7tp9wm5jnpKP8a8Y8Pgpqtoxzjzk6fUVrG6RpBpxVjZ1mwl/te6ntjJ5jtvYnruJqew0bVhG1zHfSpkHeC+MnvXW6hBbDUDMY2jWTIIx0NWodJll026+wzwmUAsodgCR7etYq7VzWxxcjTAIY7dDHF8pbPBbuaQXTW87JbgP0JVhkV0OneFryGzMWpeWzN8yqcZB7iqj6D5Qa4lkFuYzu68EVpdLQmzKogkmkSae22tjflegqWIPGzPhJApIz0we1SapPtg8+0lJ3AKyD0rMW0vDP8A6Bdeb5rB3X0pNORSaRqafDqOrGbRobuYRsP3qo+1ScEqXHQ1y15NqEYjjmvi7R8Y5Bxng/StLU/GVj4bMyx3CPdvlXSMZ6jo3auG1PxnPfXJm2xRkKFAAJOB+lOFOyMmm5N2O88N3E2otJaytIFwWZgB2rYOuLplzb3EEzIbYnbIg5INeRxeNNTiL/vgTJ94nvV+Dx9etEI7q3gkQfdI6molRl0Cyeh6F4WtU13xrBFbXIhimmMzs7YfAGSf96pLzSLO41S5is5jLEpeUZ4LENy1c34S8R6JJqP2q72wzrzEJBghvbsa7jwR4u07wn43tPEeo6LZeJYtsyyWMsmyKTeMDJHQg89KwcHGViZKS1RjNBaaU0V40CyuHV5mfk7e5HvSx67f6DqF7qXhu8ktEvraS1kUEHdA/Vea1PibrvgrWNRvNR8E6ZPpNtMq5sZ5VbYx/wBYE/2c9PpXKW9jYR6crxagS7rlVbHy88j/AAqoLS7CMb6tEGkS3FnO91HM8akKp25GBn29OtfZHwvb4f8AhjUPB/jq28ZC+1mwukulQKArxA7JvNf12sSPXB/H4/0+w82YJHcIgBBIkOAev+c1oO6SDyYrS6tJY5EZGV8LtB+ZlwazrpO8WKVOTnGcXax+3GnahbkpqVmBc206liq4YBSAQc+lZOrW1zq8yamIFhs45FEqKQMqD2NfAn7Pf7Yvir4W6fBoXjy1n1/w+snlWd2kii4tl/uMSQHQdu46c17Xrn7efwCOnqtjL4gvb+diosILBlbf6Fmwv45r4qpl9enPljG67o+hpVoSXM3Zn0Bq2r6fpCT+JL66htLDTQbiZ5GP3AMnmvzQ+J3inXvFfxC1vxcNSC/2zevcxwOMlYc7Y19jtA/Grfx1/ab+J3xf1DTdJ0O1Ph/QYrg/8S1W3PcsPutMw4IA52jgEZOa4KW98XNdJO+gG8jVQGYrwwHoe9fX8O4R4eDqVN3+B5WZ4hVpqMdkcx8Ylvk/skXtpHCzPJsIXBZcDkn615zGIXPMgD88e9egfE/xDfa9qOnQX2nGzks0cBCOWBrzzydjbmyOTg17Nf4tDmor3TSihiNv5e90Z8knPAAqWJwiqykbBnAz1quswu4I4sNhR8wA/Wnk7FCqnC8Ennca4mtTZGnoul3F5dRrbWss807CONI1yzO3CqB3JOBivvr9lb9he/8ACnibQ/iV8W5rdrmF1urXREj3rFJjKNKx4LL1wOAR3xXgX7BHhuLxn+0Lpb6yFltNCsbjVUVhkGWPaicd8F8/gK/UrXbgvpltd2TgNDITLlsEZGOBXhZtjp0n7GD6anpYPDqceeRqWOrrqEV00dx5IWYpkcsFHTArKGrWKPJGb3fscgM/BP6Vk6bLJ500WXRoI94KjHB9abHqWnFf9Kjh8z3XnGO/vXznOemtD+fmiiiv00+ZGyfdzUJ45qZ/u1Dx3poC3pRK6laEHGLiP/0IV9mebvgVs9baI/qK+L7Ftt5Ac4xKh/WvsO2nL2VuxOSbWMY/4EK87Md4s68K7XPqbRYnli0+facS2sJ/JVr58/Zg/wBG8YfF20C8xeIVcA9R+9lFfWHgTQdOvfDfhvUJdatw0mipM0eeUYcHP4V8yfsw6SdS+Kvx2tluYIjaaiLkb2xvxcScCuun8B403rNf1uee/tiRAa/4ZmP8VveLj/toh/rXjXhj/kOWOY96tOi4I65YV7t+2hGkOo+DVDxSF7e7kJQ56mPg+9eJ+DbdrnxJpcaLljdxYB7ncDj9Ktao3pO0Uz1bxb4ee512S0gDRx+YYiM/dJPSrMPhuLw/a3EV9CbnYyqJAcEhh/OvpV/2Mf2hPFN3F46sdCs4Vv1FxFbm6iwEPK7kJ4yMH1rjvib8LvHXg7UprHx5oB0u/mhjuY40iEizIG2swK5A/wDrVzSUoQuzWM41HZM8fg0+IX72oQblj38nqMDv6+1O/wCEA1/xdqFpoHh3Sbq81K/lEdrb28Jdpm9AtdR4n0eOz8VLLbNGYWj+b5wpPHYevNej/s/+OF+F3xR0TxdqOnrcJZSlZo2k2nypUMZZT0yobcPpjis5S6o1pJ8lj5k8SeE9W8KX95oviDTLmxvrKZra6tpYykkTr1BWvLfFPiqKxWXStIYrLvIedW+6D/CuK+iv26vjZpfir4neJL7RLJLe61W8/dMrBilsiLGHOON7bM/j3r492PI+Blmc/rW9JuSvIhxs7ELyu7FiWJPUnr+dAiYgEV0Wm+F5ZVElyAobnaev/wBatL+x7aBNqwgjGPWnLEQjsdMMJOaucTLBJtyAfrUOZEB3cY/WuzksYxlRCAPYVRn06BgUWPaD6Uo4hMbwskc7HcEYLdc8HvXV+F/EcFjfxG/DtCxwzj7wB6kVzt5pkkPzIu5RzVWORo+vT61tpNHM4uLsz2O68L3Gpede6PJ9ohAM4wMnZjr7VS0xNSGnXiwWBLoV5I+YZ9j1qp8K/HtrpGpR6Z4hlnOl3StEzwOA8TEYH1XPUe9eoXlh4c06GXU9C1Zt/lkulxxuHbCnrXPUqOHutC5b7HBWk7wK91q8TgoFjaPAD7fb1rq9DittQvLO3ivIoZZ0aaNJApCKFOVOevSuB1fxFfX0H2S5hRzvL+YwycdsYqrpzztL5kcLeZjC7c5H5VNSk6sbvRk7aHpKafqM+jXInkVLR32xBBnaS3JA/KsKaKOO8itrG9SdbeTYSBtK/wD6q6TS7+b/AIRm70RQVa4t8hhwysozxn3rjILaewe2EQ3XVwA8gUZOT2x+FccE02mWzuPh/eaRH4hupPF9vd3lktvMsBhcBxMyHYRnHGev1r0WeG2is7Kcfb0U2sYItpBhG9PrnmvIbVv3tsNWsJFtjhpTE2JA3Ygd+a9j8BeANP1sx2nibVP7Bs7RFmm1C6uzEZ4nOVIU9CBiinnFHLIN11p5GNXDOq1ys8d+KltNceK9Gt2uZma5ttxeXAYZbp/Os8aBpMFvO/2+MsjbDDIAXK9CRXT/ABHt/Bl38d9N0T4fT3N9pEE8NpHJeT+Ys0mTu2t/dJxXTWHwpuvEFneR3eg22mSaNdTy3uoyXBCSxZyseDyD07+tZZhm1K0KzvFSV9d9fI2o0ZRXK+h4zJHp3lSNbxbSjBfmJ6VQMpjdiBvJ5znpmu+8YeGPA+iw2cei65dSXKQeZfsY9yrKTxGPcVyNjYw6rfeVJ50UTKx3BcEn+lb4SqsTG8LlyTjoz0v9lP4j3Hwv+M2j+LbiKR9OZZtPvhGMsIJFyz477SoY+wNfrDpOq6b4p0BdT8P3sF9a3OHWa3lV1dDyCMV+K1hKdP1BobaSRfKlyHLYOMEHkd62PCfjPxf4dt54PCninWNKWQvvjs9QkijP+0VBwP8A69YY/KPrslKLszpw+MdBOLV0fqj8Sfjf8OfggBdePvFCW735EEdpAPOuZMd/LXnHv0ryTWP+ChnwQ0u8+zaZoviC9h2K3mpaLGM9MYYg9hX55arpHiW4tF8YeIbi9uor6Ty01G6keV5mHZXfkj6cVHBcaTsLX9vNdyscmQy4OMdK5IZPRirSd2dFXEV4ys48vXU8popSQTkDHtSV9QeUI4+U1AQanc4FQse9NAPt223ETejqf1r6x0283WFq7MBm3jyM/wC0K+TIzhwcdCD+tfSmkX6yadZgt/ywj7571x43odGHdmz6+8E6rdPoWjSedH9nGnRIgAIYEE7snoR0/WvB/gncmD4y/GhUbaXuEf1/5bH/ABr1v4emS68D6FOi7v8ARtg9fvmvH/hhBNaftBfGCxkUq7LG5B4wC4P9a3pL3TypK85/11MP9q0me98Oznt9oUfktcP8EtNGq/E/wrZOoKz6tbRke5cCu4/agglj0fw1qDRtsF3PblyOC3lhsZ+grzz4O6uumfEPw1qYw32bVLaXBPpICf5VrDY1pXcLH9D2hxJFo1jEgwqW0SgewUV8z/th6ObzXPD13GrIBbNFJNGMuimYYPUDbk4JPrXQaN+1PZWF3H4V1Hwdey3FqgT7TbXUbxSKFyreqkjsemD2rnPi/wD2/wDE3Rl+JMegNa6Dp4+wwRm7BnlcTY850A2+WJOMZJ4zxXDi8XSjDkvq+h6uX5fWxLjyqy0V33ey9WfG3xT0DUbz4i3+maXatdvbhVdkt+AuwEHj7vavM/EetW3hXQb7UNV2xPZRMDHPw4cdFGehJ6V7bD8U5fCnxFudV1zw9fwP4juFtI4yfL8uUYUfMeMHFfLX7YfiW6vvFd7orWhtWur8tKpwwZY1GCrDgjJ5x3GPWsqN5RVxyw9WlCU5rRO3zPnW9u77xHrE+o3ZL3F3KXIPYnsPYV2GieFls4/tFwMyEemQtZfh3Ska7iO0fLz0rvUGxNicAc+vNGIrcq5Ub4LDqXvyM5bBnOEiJA71HPpbL8zKV9sVtJcmAfIOO+RSTzCcYEYDdTk1wObPV5EznJ9KJUtjjtWdc6aF7npXTXcbICy55rFu2fadwOMVpCTuY1II5u6tCv17Vj3dgsoLqNre3euhuzyOD0zWdMMk49K76U2tTzK0EznULwPt5XB6ivbvBfiGbxT4ftYNQaG4m0qM2uHTloz0Ynv9favF71f3zN7123wXluLvxM2hREbtQiZVGcfMvzdT7A10VVzQ5jg2djV1fSRaXKxxq3KdSP0ot5TYsGtyeO5GCTW34y0m/wBL1lYL+CZGeNXjB6MvbpWVapuuVJVMZAK4OQ2fTpVRfNC5m9zXkvLqPw3/AGjchhCJApbPzfSu9034S+KdZ+CA+P01xp9t4bXXT4eiK3IF21yFJ3bAPug5HJz3xjmub1bSG1nw95KNFHIkmQo4yAK4bTxetCdKF/eLbC58/wCyidvJ87GwyGPO3ft43YzjjOK5FBVIu25Z1Vvp99NcSNZ6jbPdoAkCzsQzN1+XPGa7LRWtfGGl2sHiewu7/XNGmaG8t0my93Cqn5cDgYz+OMV51f8Ah7Vby+ePTL1Lr7GhLtv2nj8eo6VP4a1n4neFp5p/CUsqMSJppDbiQlv4l3MCST6V52LwbrU/ckuZbFJ9zb8Y/Du/8KfEvwz4c8LXyNqGoQQ3dqu8KbSRyWVS3T5cdfarGuan4xsLfVPCepak17K+oGfULmGXdHKy/wDLMkcAfTHWuF1PWPEGreJYNW129mk1GfLPI3ysD0wB2HpTby9uLWSaCK4n8uYZlXzM72x1q5YSU6dONZqTS/G4KVnoT6zdy313O0EbwR3Eiu0CPkArxxmtGOGK11K2eCS8aJ4/u3SgEH2x2rkmuJIWWWObEmODjODWjpGo6q93FJqEzSLnCBx0/wA5r0cNDkaiti3NcjjbVk7W/n6zeKvYluBRo8SmQgIJfLbd5bchgCeD7VZDm18W34ndcgP93oTjoKh8OCKW9VLnIidv3gzjcvPy8etaJ2Vx8lml1Og17U/Eniawt9d8RPJeWtr/AKNZW0I2W0IHGEUcZxjJOfT2rmbTS7SaIvcTvA5Y5j6gfkK9F8RXHijx/os0sVh5Vl4fVY4LOxiIiSDAAlYDqfUnjjgVyNrpFzFAoYtz83GDwa8ynU095WfY9eqqmLq+0qScm+rPE6Tj1pTTDya9s8EH6H6VD1qU8ioj/WmgFHWvatG1YJY2qHOVjQcmvFRj1r0ywm/0O3b/AKZp/KufFK6RpSep9j/CzW5B4F0Jo5MKsTfj+8avOfAmsTyftJ/FK7kIL3VrGT24BjH8q6H4S3O/4d6J8wyqyj/yK1cN4JZl/aJ8fAkjzbBX+vMda01aKPPfxTYv7T+oTXHhfw/alz5a6rLJt7E+RjP5V518HbO01P4keFNG1CaSG11DWrKzmkjxuRJZlRmGe4DE/hXaftFMJPD+iHJzHqUignt+6Of6V5v8OfEE/hrx74W8QW6CSXTdbsLtFOMMUuEbBz9KtK8WXTbVrH7YP+y78C9H1C3uotR8R20qZiR47p8yOAVDH93h25I9DxXjXxx8bap8Jby1+B1l4pvtS0PUxBqWy6thHNCzSuTE7gAjLR7wMd/wr6n8bfGCw8KQTapeXCNZ2IFxOpQAlSeEQnq+CDxx09a8k8ffCbw3+1jYJ8aNJ1690d9ItZrTSopoI9spgkZ3NwD8wy2VAB+Uc85xXm0MNh8dFzV9NP8Ageh7uDzPF5TWUpe9F62aur9H6o+G/idoyeLP2fh8YrXxn5sVj4sbw/Ppd1GGuN4Zgrh88YAzjHKkc5FfPXxz1jRNf0n4bXVm11/aMGl3tpqEcu3YBHc/uCgU8fI2DwORnJJNdt4mGpWfgTVPDWsWwsQ/iSXULVfLP78HcCd33cAN+PArz/4laYy+G/h7q0mowztIL2zeEJh4trqwJ9Qc8e+a7VSjRpWic1fFTxVV1Jbsw9BtiIvtsqgKQEQegHatu2TzwAHAGetUMLujt57lYl4BLcDNVbq/s7CZbmKd5lP8Cjn64ryKsXJ6HrUJKEEdXDpUE4VQ43fXqPWpv7CKjKFQwGcdyK5/RfF+Vlmu7c28aYWJSvzOSevsK6XT9SS8tyzumWY4CtmuKcakdzupzp1F5kVzpVuoO+TkgEgc1zuo6ZAEZlGSMc1u6lcxwB/MkJOK47UfEKojR20RmZRyF5x9a0pRkyK7hHRmLqNm6swA4HNYtynlnp61Zu9T1+/kPkWhOD0VeMfU1nXElzAxF3CwYdQASPzr1KcZJanjVKiexVubcuC6j610Xwd8M+IPFfxM0fw34X0q71HVLx3W2tbVC80rBCcKo5JwCfoCTgZqrpVvFexq8eTnKsPSvdf2Bdej8EftZ+GvEE80UNvatNaSyOoKqJ42j69jz1+tddNc3us82tLlTkkcx8WtO8R+HvFY8OeI9J1TStU0eNbe6tL6N0mRjyMqemRgjtjpXNaRNNJfxnzRuByNwr1j9sL4kDx1+05488WwTRzoupCwt3jf5Gt7eJIkwOn8LfjXm/hT7Te64s8MaHysFzKoAwT3FPl5IWM4vm1Ol0bWDc3e+TCS2u4IgHysf/rVL4+m0qfTNO1CxW3stQ3DfDHEQbgd2b05rrvGOl6ToPhqa/sdPtFllZfMkEgLnd6frXF+OtUh1Oy0gyaWsLQWioZVHEnPB9j/AIV5/K5SUomnUq2GiQR2jayXQyCNnmjZiQkgH3WA9f6VoaD4u+IKG9i8NPEy27xXlzHtDFc8YRT1GMgjmsbw63ia8utR07TltMzQEyLcyBQygdvVvpTrfTPEXhrWNJ8Q6jZarpNtqEJlttQNs8cd1EuVdonIxKu7glciolR5+eM7N9C07FrxnFpfjn4r2sejxrYWd2YknkRDsjcrlyfQ56CrV94S+G1kWjvfGU6gKysWhwd6nAx7V79+yXpsV18O/Ed3aaBDqM7eJVXzJ0Dv5RVSckjp3NeaftFaDo6fEHVIdGsLaNoSwuIsBRv7kY69a3r5fKlh6c4zaWxhSrqpVlTtseGPZW8jNcaXfmXynO1iMcdj+NXdBstc1aSXUGtmubfTlWa4l/hjTdj5vYnNNk02aycfZwiiQgkKMc9AMV0nh7wfqz3hW7vvJjnXZcQwzcuvXDqPcdKj6wqKu2d9OEXJcy08ijqP9lDxq+pXCD7BPOXkW35AQrjC/iQagt9M+2Wms6jpNxHDbaYqGVnYK2HJChR1J4P6eorU1PwufD+vR2srpL50LOq7slRjoa5820kuYlgxHuLAAYH0rSnVVSClHZmt4ym3NHp/wL8Wal4D1ZtXkdJtI1yzm0a/SZflkjlXh+ehRwCD9aSDXvD2kh7FNM0WURu2HnsjKxGePmLj9BivMhqEttJCqqwMGXB5xjHQZ71cGpadNlwOD32ZJ71wVaDdRyvuelhMUqWx4qSTRTVYNTq94+cCoW/rU1Qt/WmgBe1ehae4Njbkn/lmv8q8+TnFd1pbg2EHP8A/lWOIV0jSluz6i+Dk2/4daUOMh7gfh5hrj/Csoj/aO8XqSB5ulD+URrb+DU0w8CWK718pJ7lSCPm3bgQR2xjNcxoUoj/aO1w44l0n0x/ClaR+E4JfHIj/AGhnJ8P6Vgfc1Enj3jIrxmxmZZIzuxtdWB6EEHsa9g/aDYjw/YEnpfrj/vhq8TtpMMMk4yPzrSD0HTT3PtLxV8R/E+r+C7V5fFGpaiLZVdIZLhtp2oCCe559aqfB79tLWfCdgvgfWb68sNEv2kGoMkrPEzsR87L1xjrjqOua8j8beJdR8NaNaWVlIoe/t12nGSqlBuryfzBJLjcFGcEIcirUY2stDrnLmtc+/wD452PgzWNN8Fw+HJU1ywu9OmuBOEAR1kbh+Ohzn8qf+2H8ItDi/Zv8Na74c8P21vN4PmsLyd4IdriCUCOYyMOoy6nmo/CHjLw94x/Zg8G6lpmhxw3Wg6s2j3GAA0ICMecckOQDzxX0J8fvDOoePv2R/EOh6BqsWm6pNolreR+e0aQ3Ji2SeQ7P8oDhSo5+9trlnTcY2TFGfve8j8rbYwa7qkj+aYrWA4LFcknHGB6/41Pf6l4e0cCNNTumIIDKpRcHuMgAfhmjT9HtjZ3UMExjby45VLnnDKQfxyKyI/DPl6bqUF1pltfXM5j+zTySENb7WBwBkcNyCeTzXl+7KdpM91KUKa5Vdmff+KbPU7vf5dxCMBcpKuPTOF6VehurmBY5rGVjIx2KZDjYcE7sjqOOlc9baK1jG1tdRxGZ5dxZMkqMY2j2zya1HF5FeWWnRBSzbGdcdM5x+gJrWUILRGVOc3rIm1671hIVupbmMh0G5SrEM2OSD29h2qhY3ljaA+ZEznPXruNa/iOd54Bbs3CJtXiuXsLee6tZpRuZoX2nBwWU+h/MVFNJwuy6snGaRpX3i2CONlkhKqeVxyw57nFYkmsRXbkITz2YYq/daZd+IPIsLS2uZpYonVIoYizFFUu3CjJAUMx9ACelYr2HmzLKAcKABt6YrohCmlfqcdWdRvU2vDUc8PiO1uII4ZIlxLLbSuVjmUKdw46HGSD64r1D4VeHry103UPHWnx3SJf6jt0+Zo+SkfXjuQWwT04NeZeHZUj1+wZWyFuI0/DIB/rXuXwm8d2ni6ztvhQ+jrYzeHomFpLHJvW6UXIEhKkAq/zhupB56V14Zpy95nJiFJR904DxZaSy6zqP2tG86S6MkjGM5yQOc+nNaPg7RL5C9xa/xyCHAU5YV7N8TfhlHc+KNTewuLhoTqBimQooVQNoGOSSKf4O0e38J65e3N9phlXTp8iDdtU/3fbB7U6k1JOxioS0ucTrOhxWEt1b6pb3A1WWLfHDJ90qE+9ivMbbxZdXz22jeJdQli0cyfvWhjDSKFBxjv1xmvqX4mXv9vS6Br8elxWJ1CK5iEmQzFRlQCeleB6n8M4tJvViut8kpmQKmRg72rgp1YxdpG7g76HFaJqVn/a6rdRPdQNIQoc4YrnjPPHGK+pv2n/jcfjFoXw/8Pad4TttGtfBnh5oWgtoWCCVhGpCZAAjCRLtAz9489K+W/HGmPoHiKbTo1jWS3KghB90+n1r1rQPHd5411PQtEOk2GnQ6dYw2knkOWNyV+877uQWzkipxUE0qqRpTSd4ssfDL9ofW/2fdQ1fwamg2moWl1dpdyEuQ0ZKAYHrwBXF+KviBrPxC8Yal4hj0so2pSMwhWPLRsR29+K534gWE0PxWv7RoZ1Rr5VVmBORkDr0rch0DxFpXi55tJ1CCKW2vA4kmkznAB5XuK6sRUlKEYN6I56dKNObklqW/hje2Nn4l02PxJpzMbfUIWeCZck4YMcr6GvsP4ofEPwD8R/hR4U+GvhLSfDPg4aLfm7utR8pZJ5CA4ICIAy72cs+4ncVH1rjPGn7NVj4g/ZatPj7p9+6eL7BLvVNWEjLHbXFvFI3+oKjKkKFxuPzEMOMivjaDx18QbxlFpq9yCx+SOGMbiO2ABkmsKOE52qtWOj6dy5YmM7wg9UfTjfDH4H3+qNdePP2hdWlnQbDHp+lGLA9N20mut8Ofs/fsdatELlPin4vuog3JPmqpPfJEdfGl3rHjqFy97q1ylwzfMskY8zP+1kZFT2/jH4nWEY+w+JdQtomy2Iiqg/kK9CMoU42jBWM/Z8282feFv8Asu/sUX0Ukx+JV/GYlyyz6m6O30VwK6jwF+yV+yf4g0WTUtBubDV7NrqSJZ9TvHMoZMKyjDL8uQSOO5Pevznu/iZ8TYIjNceKryTBwN4BzXe+BfEev3vhi0vZ9QdZJ97tt3AE7jziuijXpt600Z1KM4q8KjPmccHNSAg9KipytjrXOaElQt/WpQwNRN/WmgBeldppjEafb9vkFcWOldbpbn+z4P8AcrOvqkXB2Z9FfBp5ZvBVlsuGjjt7+5MiBQfNBAABPbHX8KwrJvK/aOvuf9bpBPHf5B/hWt8EZB/whjDdnbfzd/Zaw5ZBH+0azZAD6Sw68f6s/wCFVDRI4ZO9SQn7QDBvDlmR2vl/9BavEICVkHPp+Fe2fHz/AJFa1Y8n7dH39jXiMRCqzscYGauPc0p/CelfEzxRPqtvoFgNPihbTrcnz0GDJuVQAfoB+tcxpemRXMqq9/FGzcjI/Svob4w/B/RrP4Sn4r6p4rmttZkbTlstGXTgkU0UkaBzuPOQMvuzjIIxyK+dbd1iEn7stJjKenHUH610xg4uzCNWNWLlFn6R/sf+CtF8Z/s26fpXiKXQ4bbQdcvZSbJSl1cc7w12xPA2vgY6qE9MV51/wUB8VaJct4G8J+AdT1/+wIY2lvrXUFY24uAqiMRlx8+1N2eoBIxjNfZ/wI+C3g34S/BXwwNP127v7rVrG2vdTS4IDlmhDbQgGVWPIQBs/nXkX7e/hWDxp8BZdbsPD9zp194K1KDVgJodnnWUp8iYjjsXiYj2zXHXw9GjRlGgrXbk9b3bevoVgazqYhSra7Jdkv1PzqhsrlpRexQtMgOGjQgMyHng+oNJfX1qXaGSSS3Un7rRMGI9Dxj1ra0qQRRRJtyCuCuasvpdmZ/tF0XfnhWOcfhXz85rmdz7GFG8fdZzGnDQracX0sm54nDRIiFnLA5HGOtXdTvV1e/uNbubGaPU7ueSeWeZwXcNjkqBhSTuP49quXTySOlvp0Cq7vgYUCp9L0SC2vnOsX8RllOdvmdKlyv7xSo2djz/AFi3ZnYbSpznnvmsLT7y8s7l7WBI3WVs+XIcc+xHSvTfGcemOyCNYlKKVBjHUe57n3rzy+trUAyW9yhmB3bQ3IxXVQqXjZo4sTScJ3TLm+/SQXH2AwcEZicnqMHpjsTWZLExDbjsQfwBcfrXRaJdPqFou4hm7n6VBqUahWJXGOBTU+WVjOVNOHMYmiQF9bszHgYnRsduCK9q/Zl8H6prn7SWq2mk6Lc6imlRXt1PHAudsfnIAfblgK8Ttbg215HOhwyOGB9MGvv/APYOs10HSvH3xIhuIbfU/FOrJptvLLG3FvCgZipHAzLKf++K9Chyp80nZI8nEycYNRWrOv1r4W+OrvVNS1KHwZqCT3967rhRiNT396bL+zxrmtXr317pWpW8dyiwyxMy7gyJw/pgt+Ve7634ln8J2Vhp0uq6jcyzWv2iabzNztI3U5xwOuAOlchrnixniSa8j1meORB88k+AQRxwK86GPo4ikq1K9n3+4cVVg/ZVEtDyXxX+zV4wun0q2stV0+HTtJeRVhuZxvOWzk9s8/pXKeIv2U/GN9E8tv4/0p7ieZDIoiLbFB6gjuK+i9G8VWV1px2WNpGqMVL3aMzY9etacHi3TY1YwXMJmzwI7Pav549q82tipc10zqhTiz45uf2H/E2o68t4fG9neyO6ncbRtrHgYJP1rb0j9nLxT4h0ix8K29vZ6ZqHhvUL+2uLyKDa8wL5UswPOO34V9h6T4qmfbv8s5cFTwo49jXG/B/xbqOo6DPqNwbczXGt3bTO3LsPO7n0wKX1ydWHvPZoqVGMZLlPm/8AaJ+HtxNqtyunraxppUFlYXMzBd4usqpYY55JFefXf7JXxP8Atrak9+CJQSMrydw65/z1qj8R/jj4k8VfHzV/Bdlb2S6RfeKBFI+w+bIDKnG7tjbX31dW00+yGB5nKKFAj56ADmvWzPFexlC3VGdKEa7dj4H+N2sfFzwD8INJ+Ceua6ZNG1zUftMdrHFt3rGQNhYcld4yR0yBXpPwn/ZW1vQ/Dlv8ZPDMGo3zaTvikiubJTCCMZlHqgyck/3TXJftIeFPin8dPj5d/D/4c+HrjWJPA2iNePBHPHEYIgVaWUs7AZ3MqgA5JPFcd4T/AGsPi74S+E1/8G/C/jMppniSGe3v1uIBNcRxyrtZYZScxFkypIB4JIwea9OjO9BOot0eRWpONVqk7a6nT+PPhfdeNWi8Ra3IkGo6prVx5txbxhU8lQAoAHHrXFXPwEvoLxVsPEH2iF3wBJGAVGwliR9eK4TXfGniqDTtL0h/EVw9vYEmCMSEbfr612PwK8EeIvjT4i1DQZ/i9oXguPS9Lm1k3Wu3LrHc+UVHkxgEEsdxJwchQThulKM6VKHvrQuMKt9GeSeMo1ti8CkfuZDGQO5FexfDLRFl8BaLMqZ8223n6lmrzX4pRRRRWaRQRoZS0jSKeXPTPsK+iPhZ4ZU/DTww4IJk02Jz9Tk1VC0tUbuWmp8WX/hXW9ODtLaeYkeQ7RNvC4657ismvQrDxVYXbZmlZbkEAs3BYAYPI6/jVTxR4RWeB9b0SIbUXdcwrzx/z0X29R2pp9zO/c4peh+lMbpT0wc0xvSqQxR0rp9IkzZRj0GK5deldJo5/wBFWpqbDR9BfBO6SPwTcs4OF1Nl+VcnLKuOlYWpM0f7QUG7GW01h/441a3wIlH/AAjOox8hhfk/XMYrI1xcfH7SwCP3unkc/wC49Edjil/EkSfG+cP4ThkdQ2y8hIB78GvEIpVZGRm2hgQTjOBXtHxs58Gc9VuoT/OvDY1aRdi5y3A+tWtjSlrA/Q39sjxrpvif9l7wC8ejiW8mGmzWs0KNtiCwbX6DDAgEYPSvi7wdbrq3iTSrW4t7mSOe+ghaO2TdLJukC7UXuxzwPWvrTTvjD4S8SfBbwJ4QvXitIfDmniO7jmx5r3H3FxntjcfxrwufVtB8I/F3SPFnhmZJLXStZsdSWNegaKdHYfiAa6HUc52vc56FqcZRitrn6+aX8UPC/hrRbTwn4z0XxjtijhgW+vNEkYoioMB5IgQDxjJ/GvM/jB8ffBHjDw5q3gW90XxNqUOpadqOlvKliRFsliKRvzgE7tp6cbc16Hr/AMVPCsUEN9FcZiuoFnjzHyUcZA9zg1wer/FfwbLFJHeoAkwKNlQhwwwdvvg9a6q+Gp0k3GV7+RxYGtXxD5qkLWfQ/MHRZyqRJMQZUwrn/aHB/Wt2/lCxnaRyOvvXNapYx+G/FGreH4bpp4tMv7i1jlcYLoshCOR6lcH8a1baf7au13wF2547V8VUjyydz9Mw1RSgNezuHsGa3JSbGU7c/WuCh0HUtMvZL+8jd5GJcM90R+YrudR8V6ZbyNawEvIgICj1FcveWeta3I8skbpCACMgJg+nPWrouSurbmWJ5ZNcr1RiahcazcRPK2PKBwctkH2zWVa2N7LJI1vLaQlhhgEz+prtDaommyadcac6Er8srSLgH1FcjcW9zZTF4NhGBkhv6V003pZHDVi7ps0NLSTRljjaYNgnJHvUuqXaMDt781hXGpuHBcc9aVrp5owecYPXrT9nd8zJ9qlHlRD9oxNk9jmv0S/Zfj8W6/8ABTwqmkaesMCmeF49jBpNs7Zn3YwQ4Oe/Q1+chJ8zjjNe1z/tM/GOLwlpPgnT/Ek2iaRpNjDYQRWYEbvHGu0Fn6knrXdTw0cRB05bM8rEVXCSaP0w8f6Zrl5raPZeINI07Treyjh8y6nUZcDkc9AK5OaTwvEiJr/xp8LQbFCbRdpgY9i1fmTeav4g12BZtY8RapeCVi7NPcyMPrkt/SsDUINPO1YHaZwcEsMgVnhsmweCoRoKLaiurOepicRVm5c1vRH636Tr/wAJ4VW3X41+FpGPBBuov8a6bT5PAd44jsfip4fkb0S4h5/Wvxiu9KudPmVL2zlt3IDhZEKkqeQfoRR9subcAw3EqlemGIxXRDCYSOns1+Jm/rF7qoz91PC3g3wpe3ONVkfxAr8QiwvVUq+e6hhn86xI/gRqHhKWTRfCWjXVpa+ZNeJDJcxz7Fd8nLkgk5I4r8YdA+LfxD8MTrLovivU7RkOV8q5cYP4GvdPBP7ffx5sL+F9d8e6lfCJRD/pVwzsU7rk9qhZfg1NyUNH0voRKWLUdJn0lqP7DPhqDxuvxA0uTXl1T7d/aUYn4t5JQ2eAeq5FbfxH+P8ArHwyX7Jf6/4QTUBIqPArl5EXOCSo7iue8M/t5W2v6U+h+MJXWGe3NukkLAPbqwIyp4yB69a+D/ih4TuPC/ia5uYtQOqWF5K0trqJcu0qk5AdjzurpxOBwtdRco3sZYTEYmnNxbsfV97N+zL8Y/iHP4q1T4zeI/CvibX4Tp92+mSPZW80TLtZGkBxsccFScH0ruo/+CcHwb8SLbP4I+KviCW4ll8syJNb3EZbGVUYUbcAev8ASvzpj1SWFwxIkx/C3IP1rpfCHxV8b+Cbx7zwj4p1HSnmUo628xVCp7FTkccYOMjAxRZKNraI6uR817n2yP8AgmTa3qQ/YPjZdBpJZYR9r0xCEdSQVyp55FPP/BLzxzHEIbX4u6MJImDxmXR3znPB4avP/hb+3z458LaLZeHvE6WOrxWY2wXW3a3zDo/vz1r6z+Ef7WHhL4qaDPq+tavPpN7oURS7ghuVkcR44lVRyy4744xzRTjTqvlkdUEm7Hlsv/BMHRdS8HzT+N/ifqd54rFu6232F44LFJOduUZGcr0z83rXNQeHdW+GelaV4GuriM3Gj2EVtMUAILqCCQfwr7P8T6rFoXhW+8Ux+IU1pbGyW4it0I3S7xlCH6fNxg+lfmV8Tbv9qu/8Uy619gWztdVjF7Ywm7hYrbOzbM/NweDweap0VQdkrnTLCylH92tT4/gUxkMyE9yMZrpvDmu3emyg2zGVVIzA78Ed9p7H26VzrKd2eT7VatJFhcHsTzWD2OFo7jUPBmheL7c6p4aljs77BM1u3yoWzyCP4D79K821TStQ0e8ex1K1eCeM8qw6j1B7j3FdzpF+8c0d3ayNHOgwG/vezDuK7COTQfGlkdK121xOq7lAH7xD03Rt3Ge351MZNbiueGIM8Vv6a222Xn1qTxd4L1HwfeBZ1M1lMT9nulX5X9j6N6iqti3+jgDtmqm7rQaPc/gRLI+l6iBJtjW7BZcZ3Ex8c9sYqHxMwHx38OuBndZ4/RxTfgZHLJoOtPExJS5QFR1OUNUPFF/bxfGLwtI8yDyrdEkyw+U5YYOelOPwnI/4kjb+N9mU8CyTEDm5iI/76xXgQjdVV24D52kH0/lX0X8cIy3gC5YSK4WaFhtYHHz+1fOqQuTwp3H2pouj8J7voHxnm1XwxP4e1DwboMkNlpIhSZbfE7Oq48wv696840e2kd4vs8/nSecMLIwGecjn0qS3UCyiS3gEb+SEkOCN2RyTVKHTn3RQROuWI9fWtKdoO6N1G6P0Il+IBm8LaHiJ1kg06GNg8ZZVZVHyg1xGs+Lzd7ri9Efmu5yV7V5Jpl5q8elWttfa7PHHDEE2eaRsGK6bR/hZ438U3v2Lw7puvX1wYjP5f2J0wgAO7LgAjkY9cjGa7alXmjqjKnQd+SG76HnHxNhij8aS30EiMmoQx3GV6FwNrD68Cq2lSmRGjyFZ0ODWv8W/Bmr+DrSGfxTdJYX1uVMVpcnE8iv1G3+HjB+bFcdptwrFXST7y5BB5Br5rGU/fbR9Dl9b3FGW6MtbDW9PvWeNYDudgzuCSQW6g12kGmao9kJY3guNw5Jc5P044qeO3iuYQSQG4wcUx9WOiHP2UupGcbsA1yOq30PVpUY0vek9Dmr3SdbW4JmgiMaDceWOB6dK53V7EI7meYgnoqrXU6z44upcotgY0f5AN2RXI3klzdtvMRxn0rem31ObEula0NTDt9NEt+CZGKjOAxzxVy5VISyLgDkcVKqNbks3BrPvJ8vhTn1rpu2zymuRE2jWbajqkFsnIZ8sfQDmuu1m0vZ45J9kcn2dcsSgGFrk9DurS0lku72+e0SMA+YkBlY8/dABHX1JxXSSS2PiTSbnVPDMl5JLZ5lu7KYDzPLA/wBagUkMo5yByvXkc16OHahDzPKxF3MzbzxJqEtktirKkKhQQsYBOPf0rN/taeGGSCOVgspBcAfeI6flWbPqSyglc57emKg+0eoPrWjlfcSVkdv4j8bat4yng1DVTE1xFBHbkou0FUUKvHrgVl65KVkaIIv7lFyawre/ET5I4NWdc1mPWJ4porC3tBHBHEyw7sSMowZGyfvN1PasrcuxTd9yFLlI5PMlgEqjqhYrn8R0qt5pABzk+1MJ7k0m4euKYje0HVHNwtrNOVDfcfP3Grr4Nfn+yyafqaLc2znDRN/MelcNounT3d1HII2EaHczHgCunmUkHbk55NCfKxNJ7mXrGixRs1xpjSSwEf6vILL/AI1ieYq5DKykHkE10pdojvDYPrUN2uk37qLryllzjejjB+oFO9wWhhCbkHdk57mtKy8SX+njajMVJ3BkYqw+hHIpi+E9YdC9jbrdoAVBRuc+tV38P+JIOJtBvwenEBP8qORsOeL6nssX7TfxS1vQB4Y1Txvq72X2dbNA0wyI0OVUkAZx2J59zWHb+I1jtoYLpb++eJSolkvZckZJ4AYADk8DuTXnUHh3xBO4SHQdSdz2FtJz+lb9p4b+JMECpbeFdY8vGRm0Y1EoSluehg82rYGTlTknfvqcSQAMCkUYYGpdn0ppXGccdqzi7nMXrG4aJ1+8vOGzXUWrM6pJDKwIYMsiNh0PqD/kGuQhVmxk5re0WeNJVSV1Xd0fOCDTkjNo9CsL3TvFumT+HfEMSOzgk4OA2BxKh7Een17V5XrfhzUPCepSaVfruUfPBMPuzRnow/qOxrsRaTtskjk2yL86upwQw6Ef4VvzwW3jvQZtIvzHDqlpgxtjAR8cMP8AYbuO1Q3pYEcH4T+IXiHwZbXVlpAtmhvJFkkEqEnIGBgjkVROr6Nc6nJqur+GY755XMkiG8lQHJyQMdKyrmG4sriWzvIjFNAxSRD1VhUe8ZxikpNaBypu52d14h+FV5EYx8NNRtG7eTrjuo/Blqkh+Fsh+bSvEtp/1yuo3x+YrmxzxnrTwmO9UpsFBI7S2T4c5DW/jnxdYH0ks1kA/Jq0I4fDTFTa/GcjaQV+26M+Afc4NefbPrT1QggAUe0Y+W3U+hfAfxI1jwjq1prFt4/+Fev/AGNg8cGu6W+1iCCM8AgjHBzxXvHiD9vT41anNNeJbfDiOxMJt4zo1zcXdxHKVyPmdsdfm5GABgV8OaF4buNYD3M0qWthA22adsFieuyNerNj8B3Ndxo1pY28JisbUQW6DESDBJJ6sx7se5/LAqpYioo8l9Dei6kJqpB2a6+pyXxb1LUdUmttTv8AWbrUbnUJZ5rqa4Yl3lLAkse/Jz+NZfhXWb0wFJYpGWIZEuDgj611XjuytYtKs5jaK0tvdMpD8qdy53Y79K5bw9cyXGsyxTuWDRMNueAOOg7VhUcZU2i6HPGopJ9T03Q9VguoUXfhzgYz1OK2JYFuF8qRtoPTNeSXV3eeG7/bFK3lkhkbnIFdL/wsCGSBXOeg7d/WvMlRe8T3qOMhZxqbm3quj2ixZkYsVORxjFczdGKLK4yuM5zUl74ztZo1Td8zZB9K57VNbSQfJgYA4rSEJW1Ma9anvEbfSoM84xxWM7B2JFRXWpySMUVi2eBgdKsJCFjGTziuyEeTc8uc/aPQguI5JrO4jiXc20PgdcA5J/KtPwFqc2iTprMF00MkMo2hD8zY/Ssq6mMMZZTg9BVXTvMf9zExXJNdMXaOhx1Fd2PSfEngOx1S8XxHo1wLW01ZPtK24h+WJ8kSKPQBucdtwrBfwBMAd2pKMdcRGvRfhx4is38PS+F9X882rTeZ51u4Se3YjBeNvX1ByD3FdJovwb8L+O9YTS4/2kU0eecsIzrOl7YwwGQrvG2ASAcHHWrUupz81tzxNPAwGT/aDvj0jwKavhRNxy87BTgHAFfT2n/sUeLpJftHhb9pD4T6uw6Ryans3fVecVrr+xH+08pZ9NtfhtrSv3tNcC5H4inzX2F7an3Pk8eGbeNQWtZpOcfMcVYh023t8mLSIww/vDP86+nLr9kP9rKwXD/Aa0v0XjNlrsDZ+m5q53Uf2e/2iNOJOpfs0+L0x1Nq0Nx+W080tRqrBu10eN6XbLeXSxahfJp1sPvP5e5gPYCvZvB9h+xtpsaN491H4ia1OMF1tAIIj6427T+tcrqXw5+Iemhv7T+A3xHtsdSdBlcD8VBrBudPNkpOp+EPFVht4P2nQrhMfX5aFOUXdK4SUai+L7j6k8L/ABF/4JkeHgrXnwa8SXjr/wAtNRtJLw/iGmx+ldnH+0H/AMEzEQRw/Bw25YYG7wnH0+pY18Jyax4MWTyru/MDD+Ge3ljP/jy0rTeALlDjXLPOOCZ9pH4GtViZr7K+4wlgoy1u/vPuu0/aF/YD04n/AIR/we1luOQs3h0bVPtwcVsW37Sv7KE2F02LTV5wFfTBGR+JXivzsm0/SpGP2HVrWVGOceevP61XfRMrujdZCf7rjNbxxs1pZGMsBBdWfpRafH/9n66kK20dnBngMlvFj9Oa2I/iT8HrlBMusWqBucNHjFfly2m39th0SZCBxtBP8qVNZ1+JfLj1O5VR2LHj860jjnfVGUsCukjlSCKYxOelSEZ4FMbGMmvMi7Ox7s0kKkjLgg5x60x7iQ8ZyPfmkJwDiojVkNG/o+tXEB2+aWVgNysevaujtdZezvLfVLRgHQMGAz+8jPVSOmfT3FcDbSGOQ84J9a6nTXMsaRyTRKr9CeQPriolFWJLnxQ0yyu4rXxZaOWWZVimdP4uPkcj/wAdP4VwCvbkcXjg+hWvT7CE3ml33hi8VCpVliyOm7lSD7MDXkkqPbzPBKuHjYqw9CDg04aoDQjbaeL1T7NxVgNMT+7uLc/UisYMTwBkmup0v4ea/exrPfGDTYHAIN0SHK+oQZP54ocVe4FQS38fJht3A9G/+vXS6B4d1LUrYanqyx6VpvUXEoJaX2iTq59+B71r+H/C/hjRp4/s8Z1S8Ug/aLpQsUZ/2I+QT7sT9Kl8T6jJeSSfapmkSKMqp3E444//AFVDsNXbsSQPowRbbRoZkt0JG+dtzytxlj2X0wOOK2tIHKqBwDxXH+HpRNaFejRyYP4gGunttSttKhlv7xwsMEZkbPfHQfU9Kwe51R0RV8Yano19Fe+HLeRpNStZEuiNvy4/iXP97BBrz2xuFsfEEMhbCsMH8a6Xw/CjxT+I7eYyT6kT55kUN5Mm4kqOOvTBrktXBhvzKrFtshKn2zTcdbeRMZcq5j0i80mz1uw8uRVJK8MRyK4LW/D2paZMyQRPLFnC45IHvXU+GdYSSJbeRzjHy4NdBIsU7qXwMjgkVxxqyoys9j1ZUYYqPN1PGXa6hwrKyknHSl2XsuMg475r1LUdJgkkDeTGdvOawdQsYlb5UUZ54FdSxKfQ4p4OUdLnPabpvlr5snL/AKCrUygE45rQMJSIZFUJepz0o53J3YKmqcbIyNQOY8enNXfDtn/oj3bDlyQv071n6lKmSkZ3V08dstpYW9spGUjAOPXqf1rdaQOJ6zJra6aCFhC/lOuRuHUg1AmqXlteQXsdzIZbeRJEYnkFSCKY52qT68VSlkByAetK4nGzPVh4n8Aa2yxa9aubqTkXMMS70OOucZI9jmoNa0K80S1XVdNuzc6Y+Nl5Zs8ewn+GRQcxn68Hsa820y2imufOnbbDb/PIfX0UfX+VdX4Z8b6rpGo509x5EuUkiflHU9iDwQfQ8UOMZa2M0nDYtw/EDx1pJ36V458S2WOht9YuUx+T1uab+05+0XohA0r45eNYQuMB9VeUflJuqPUvCujeJka80BV0y7fk2/Jt5D/sjqh9hxXn2raZqWjXJttTtHgfOFJ5V/8Adbof50+Vx2F7k9Gj3fSP28P2t9KK+V8Zry5VABi802zn3fUmIE/nXo+gf8FQP2mNLgW21jTvA+vYIJmudMnt5GHofImVfx218dRuPWrKPyM/nRzNCdCk/so+y7n/AIKVfEzWWddf+C/wy1OFjxFNbXDYX0y7Pn6mpLH9sv4P64Svj39i3wFeFuN+nm2U/UiW3P8AOvjuJiCCDWraSZxjHPFZutOOzGsHRetj6m1D4wfsTa+B9t/YsFuXGXa0vYYCD7eUyg/pWX9g/wCCfOvtuf4JfEHQ3bvaaqXUfQecf5V4DbyMpAzWvYXRjcHJxWbxNQ0WDhbRv72e32Pwk/Yja8hv9A+IXxT8LTxsGinKeaIT6/cNdZJ8MfgvckS237ceviMj5Rd+HUeUfUmGvCrC7LAAHg9M5rVSRtvTP0Nc88ZU62NoYRJaSZ8tEgH2ppOTmiQ7eKiWTdnByB3r1EtbkzaYrcDNQsMDj8zU2M9ahk44xVEETkDjJ/A01ZZE4WWRc9gaHPoccelR5B5yeKCDtPD+pyvND517O8hTy13hcAg5Xkcn059a5/xnZGHWHukX93dfvOnRv4h+f86f4d+1Tata21lBLPLK2PLVcnGc5+gHOTjFegzadpmmwNfXPlX15G2LbIzFG/dlH8WB3PGe1RfkdwOd8G6JHozLqV3BHLqBXfHHKAVt1xkMQer/AMh711Oo3X2qy+17l3lvmByTn1rn7WWT7SCWbc+7eSck5BqeK5b7O0bOPmOealyvuW4WHWxQEuhct64xz6VV1GQyIc5PNWJmEUYC9RzxVCZzI4BPJ5qC1FIi03U49KmkaSGR0kAOIxk5FPvTea6pN/8AuYFO5LaNuB7se5quy7JdwArUskEo8vvijbUofoN1DYo1ntUI3Gzpkf571keJNH8iJL62LyWzMU3Eco2eVb39+4q3NEYp8NkYPWt6wKM11aXUYlt7hUZl6gggg/Q+9J9ylr7pw2k3LQMArHAPArudM1MXcYjYjzAOvrXKaroT6NemNGMkTjfC3cr7+4q5pjsoDDKkYrlrJPU68O5QOslLFTuz7VjT2zyzbsDArQtb5ZV8uUYPTNW5LZUhMpAX8KxXu6I7mvaI5XUD5IKjrWJdTeXAzNnJ6Vo6xdxrKy5yc4X61LpGjmXbqF6oCL8yKf4j61001bVnn1Za2RlW9tp2iMJ9WtHurplWRIySqJnof9oj06ZFTR+INNn/AHTNLG2esi8fmKn8Xq1zbLcBdzRNtOB/Cf8A69YFlp8apum3b264PSutNNXZwy916G7LhovMjZXQ9CpyDWZuMkoRe1QwrcWl0FQsInzv9NuOpq9pFu07mUjg5OTUtA3fQ0LWH/RxCQQpOSR3NaljZ21qDKcbuoOeKrhdvO7AAxTxM8g8tEGCenvTRnNWNFfFM0HyRHy8DAKg10+lahdeIbc2Wr2SXkbgcPGWJH1rE03QdJs4BqmvT7FA3LEG5f0qvqPxFmgRrPQ7KG2iHRkHzD8e9W3YyS5tiz4n+FusWcD6l4XiF7Coy9pu/fL/ALvc/Q8+5rz+S+1DT1R7/Sru3DDKmSNkDfQsBXRWXi3xBcXiOtzL5inIYE5H5V6xovx5+M+neHV0Pw78U9U0RYlZILeR0ns2DclWhlVlXOT8yjg9QaEk9R3lHQ8Jh8SWrfe81T7YP8jV+28S2an5p2Hu0Z/wrudb/aX+LaXM2leOfD/gPW5k4b+0/BelyO3owkSFWOR0Oawbj4zaFqnGs/Af4dOc58yxtbuwfpj/AJYzhff7tJ0os0jOS1sMs/FWlnAk1C3H1bFbllrmlz4EOo2jH2mA/Q1y03jL4bXbkyfCuazB/wCfLxBNwfUCZH/LNU5NQ+GcxLLomvW4PTMlvN/7KlYyw6exoqr7Hrek6gpcCN0k9gwauwtrxWiBaNwfZK+erSL4bsvmx6/qli46K9g//oUch/lWpFceF9g8v4pXES9lLXYI/DYa554RvZ/gbwrcvQ89ubglxEpwWNWI08tQo7VUs0MrtcN17CrjMAcgflXo2OVO+ojMAOoqFxz3/wAKeWJ5NNPPpmmMryA5+lRtgZxUjng1BIxBxQQeh+Dkg0nwVd6tGFW8vZHiMp6pAuAVHplic/QVPCWureNieNny96ztOiuo/Bhs51Zd6O6L3wxBGan8P3gnt1jLcrxzWMndmtNWeo6OMwXsRxgGQA/iaJd0MxTb8obnNWb+Jggdc5U5/rRqaK8nnDpIA4x780i7Ez2ouB8vXbxisaZWjuCrdRV/T74291GJTlPukH0NR63EYr4jAwTSQPYp3CfIG6VZ0yXZMh59xTpIc2QY9arWZ2yAkHg5oBGrf2quA4AI9QKNGumgvzE/IaPAz9allZiCOx96pwNs1EHplajoadbnQ6xp0eo6VJsXMsGZE/qPxrm7SJQATyK63S7lWJTdyF3EHp1rmbxPsN/cW6fdSQ4+h5H86wqp2udNJ6lmKPblgOpzUt9qn2axMbnLnhRUFvfKqYZOT+NNkt4JpftdyQI4+csflrGK5pHROpyRujKsdEa4n/tC/wCV3ZRP73/1q0NX1S00+3CyPyeiL944rL1bxK7MYdNGF6GUjr9B2rm5luLqQ8tJK56k5JNd0YN7nmTqdiee+vdbuwka7IY2ztHTHqT3q68QTCqOtWbWzj061ESgFzy7erf4VEAXlJz9KttbIzS6sRYFI2uMjvWjaRrFFgDA9qrquOBV+1j3MiP0ByfoKQ7WH3IEaIq9W5NSWN1a6eTNLbmaRRlc9AahlkMs281JIVFnI5A545pp2FKKluZmsazdarMTM424xtHQD0qki8ZNRMd8pCnPPFWgAi0bk6JWQ6K+Gnx7kH7w81raFM+ty+bdB1jgIaZ14yM8Ae5rnorO61W6FtagEgZZmOFRe7MewroI9W0vRLRdMsYmuQGLTSH5fNfoT7DsB6VcXbczmrmf48nbU40uUt2C2J8sN1xEeAD7Bv51xXmpjvXpttr2k3Eb2t5p0EEE6GFwS3zKffBx9TXn2vaTJoupS2TuHVcNG4Iw6HlTx/nNaRsxJvZlQS+vSneao61D0FN4PSnyoq5cSdRgntUonU/w1QzjrShjjrScCudmrCBFEq9MdaUsenpQ5Azkj0603/OaBtWE7dKaaeelMYkjrQIgnYY3H8KbZRG7voLfkiSRVP0zzTbh9xwfSux8P6CNJsodWvIs3NwnmoCQRFCRwf8Aebn6DHrQ3YmKu7HTrGJEdP4SOvsOK5a4il0XUiU4ilOQR2NdDZ6lE5QyDy9/GPWmeILFLq2bYORyPb6VznTJJq6JIZUvrPO0bhwf8agfL2SK3LR5jJx6HisfRdRa1mEUvP8AC30rf2D99Eoypw6n9P8ACgV9DCuG8s+ZnpV/VX8428396NWP5VQ1Ff3Tj6mrgzNptlMMZMS/jjj+lMkuSx5skIH8IrJhJWWtyVS9mvf5fSsVlKynINSU9ja6wBsDkd6org3fT+D+tXIX32/qMVRRv9N+bspH60WKTNqx3x3aTEEL5TJnHfII/QGqGvyKuqM5PDwI/wCPIq/aMQPLOeOQax/FLGLU7KRgWR7Y5x3w3T/PrWTjzKxopcmpFHMIAjToXkmIEMC/ekJ/kPeq2sWutTLDcTSQzW00hiUW7ErG452kEenf2NOsXmXU4tVmAeRH3iM8KRjG32GOK2Z7i1khFtZWj28Rl89vMcMxbBAHHYAmrhBQ2Mpz9puc2ukxxLumbLHoB6VatbWOFDKiAH+EnrVmRDcTbc4XnPsBUV3OoOxOg4ArQhKxVuJCzbQaao+bOKaPmbnNWI488Y6UhiKOgIq/AojjeU55+Qf1qsiMW4Herc58qIRkfdHP1NAPUqNIQ5/Wi6uWSz2Z4b5vwqrGTcXIhQkZ5YjsKj1SbP7sY5OMegoB6FW0QyOWPc5qy0T3Un2eLjAyzHoo7k+1FhGRGzgdsCnTTLaQMobG85b/AGjQZMdcTw20Bs7MFIs5Zj96U+rf0FQIuBuYYY9PaqsDNO+4kkZzVw/eweuaYDkjUwP5nO71rB1+5N1JbFsl4ovLJ9cE4/Q1tXlwEiKA8459qyGWG5hJkQMyP39COv6VUHZ3B2ehjcnrSY5rRazgPQMPxpjWAPKSY9jWiqxYuVlE8UGro06QnAkTn1pP7KvO0QPuGFVzxfUOV9i7tLenFIw28HvUgGFBI61G/BOeaQ7dRpOBnJxUbNtB7mpD0NQSnnCnpQLYfo+nnV9XttPBIWaTDn+6vVj+QNeo3Nkk67I8AAYQeigYA/KuF8ClItTurpxkxWzbf+BED+RrvY7oyRCSDDHH5VnU3sa0loZ0Vmyf6PIpA7H3qwUdVMU4B4/T2qKSa8JbKDk5zjNPjv5NirdRHjgEdqzLsc3q1i1vIbiMd+fpWho2pC4EcUj4YHZn2PT9cVoXlvFdRMY3DKO+a5S4SbS7kSR5xnI9PpQS1Y2NaiEau2D0PWptCAudGhBwShZD+eafqRjvrBLyLlZlD9fUcj86qeD5wv2mwkzuRtwwaBXszbdP3QXOCO2KzWQh+RitdkyuVOR9aqTxjOSKC1qFudsPHrUMEYfUT/1zLU9MBSn5ZosABqSDH30cfpn+lAWNW3TIB7jisjxauG09zjo6H9DW9EgVwi8bzjmsbxuNkNhyeJ2T/wAdpWtsU3oY8DgEEHkHir/mAROwx0wPqazIeGArRgTzG8xuUTnGep7U1sRYUr5EIJHzuMn/AArJncs5rSvHYrurJc5frQKxNEORVxBx71VjBOP0q3GMjpzQBYtUBYsx4Xk+9VNTuRHE7E4H3jV7Hk22M4MnJ9hWFfhtQvotORsCVsufRB9407CbsS6SjR2L3svD3BJX/cHT8+tVpEe5myMnNX79gGEMKhUUBVA7CnW0Kwxmdhlv4f8AGkFtBgCW8G04AXr7Vz91dG7nyPu5wPf3qfX9TMY+yxMCzDL+wqhpdvNcybwM+noPetFFWuyG+hrWwVUAT/8AXU7MI13Ec+9Oit1hTk5NVLyY7sDtUCasU7yYuD7mqcchRipH31Of5j+VTTHcQMc1XlDJKmfQH9auCuiXuThw3TvS1Whfa5Q/wmrNZyjY1i7jwc4PpVlTxwBVME9AalWRlGMn86zfmbRYrcDAGMVE2CeDT2bPNMYgcgYxXYlYxkRyHHOTxVSYnacHPrU8h44PFVZGwOvWgyZ0Xgm3LXFxcSuVR0+zqfV2OR/L9a2Xe802YtExAz0rPhiNholpGuVeRfPY+jE5H6AV1MSRaxYRXhUbpFy49GHX9aym7s2irIrWmtxTLslG1mPJ7Z/pV47ZlIBBB/GsG90iSJi0Oc+1QwX9zaHZJ27dqgd7PUuXEN7p8pubP5lH34yflcf0pb6C31OzFzbglJBxkYKt3B9xU8GqQXCYlwCR+FRgi1mMqDMEv+tUf+hD3H60D0Zn6Hckwz6VcD54iWjH+yev61SLNpmsJcoxAY7XHrVrVYHs7iLUrfB8vk7ehQ9f8ah1jypdlzEch1yD+tMl6nYI6yKGTkMMj6UyWMMueearaPP52nQSA87ccVcIypOevpSKM+VdrAE/pTImCXdvIo53EZ/A1JcAh/b+VVS+26hC9sn07UAzoraS5nmVLZI2ZPmJkbao9yfrWR8Qg8iabJGNoMzh/QMBUtheQq00F6Zlikw26NckFc8frTPE8jXHhuO8mj2H7aNid1QjAz78Z/GgL6amBBklU5JJwAO9bcoW2iWDILDlyO7HrWXoib5WumyVi4Uf7X/1qkuLoyz7VPAPagE7F8wJJAzuenSsCRdspA7GumZQtsVHBIzXOzriYgDvQDJoRnA5q9bwl2APA71XtVGM+tX0Hlxsx4JHFNK47EGoTBdxyOOn0rM0YFzd6q/8TeRET6Dlv1xTdcuhFEzA9jxVqC3a3060sh1WMM4/2m5P86q+lyHvYW0tzPKXf7o5NQ6xfJbwkjB/hRRzk9hV2RhDCYlxjqT71l2UYvrlr2b/AFcJKRDHfuf6VK7sbMyz8PXV7J9r1FmQOc7R94/4Vtx20cEflwxqijoBVmSVR0qNXz1H61UpXFypELLgGsi5B8w59a3JEGevWsu+i+fcBioFJdSiFUHdjmq06bpQx6Af1q0feoJOpOKadjN7FOUlZyRx0NTRyg9ahuziQH2ohYMMdK1krocHZlweop4GelQITnGMD1qUNx3rnlHsbp2AECmOV5z0NOHT8ahcndXUYDH71XKlpAgz8xAqc/1NJbgNeQg95kB/MU0Sjt/ElsYootv3VRVH4CtXwlcRyaSIwRujkbI+tLrEKSWw3jOeK5rTbiWxvNlu5UHtXO9zbZo7SaFCSSOe1Zt5pscykhRzyOKtJM8iK7YyeuKcsjN1PWkXe5zU+nSwuTEaalxcRfu5AevOa2LxAGIGeprOuAGHI7UEWsQG7QqbWbGxv9Wf7p9PoazHBjje0bkId0Z9u4qe7RTlcd6qzsWSOQn5s4z60CbOj8LSiTTdhPMbla2gwxgjj1rnPCjFUnUHgNmt5vuk56DNBUNiOQBjwOD71Ua2le7UKgJEZI5HPIqtd3k6yHawGB6VPCFulQzKCR0I6igbZbt9sTsJI2GOPunrTPEcqy+GplxylzCR+dOiWRGAjuZkB7BzUF1LLPIlpO5kT/WcgZyvTn0oEynEosbBY2+9jL/U1StXMs5OfcVJqUzkHnr1qHSuZM+9AvI6RiDD+FYEwPmE1uqSYsHpWTeKPOyBjvTasU9i1aouwE9KfdShUPrzSQDEQI9qpX0jCNiDjAp9Bt2Rj3P/ABMdVtrAZ2vIN2D/AAjk/oK6eQgsXI+n0rnPDAEur3Mr8tFD8ntkjNb8pPQGqdkkjOLvqZGrXEh22dtzLO21cdvU/gKtx262lulrETtjGM+vvVbSo1mv7y5kyXiIjT0AIya0SM9ep71L0Vh21uVT1Pc/SjvnmlYYNNPQ1Ix6sCSCRz6mobmJHBAoBIJwaeecZ70C+LQyJowAcdRVOUY/GtS6UK5x3rNnGCR6GmZMz7zqv41FE2DUt51Wq4JByDW61RJfQ5PXP86lHQVViJKq2ec1aHQVjLQ2Tuf/2Q==" alt="Michael Ukaegbu" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--border);">
+          <div>
+            <p class="slabel" style="margin-bottom:4px;">About</p>
+            <h2 style="margin-bottom:0;">Ops person with a builder's instinct.</h2>
+          </div>
+        </div>
+        <p>I've spent five years in B2B marketing and ops at tech companies, and I keep gravitating toward the operational layer: the CRM, the data, the processes that make GTM work properly. At Netcompany I own the UK CRM, run weekly data hygiene audits, and build the trackers and frameworks that surface what raw data doesn't show on its own.</p>
+        <p>I am building the technical side to match: SQL and data analytics through BrainStation, Retool for custom tools, Lovable for rapid prototyping. I also built and shipped FieldNote, a mobile app that fixes the post-event lead capture problem using AI and HubSpot automation. Felt the problem firsthand, built the fix myself.</p>
+        <p>Looking for a Marketing Operations or GTM Operations role in London, at a B2B SaaS or tech company between Series A and C that does not yet have a full ops team. The kind of place where someone who can both run the process and build the tools is genuinely useful.</p>
+      </div>
+      <div>
+        <div class="side">
+          <h4>Quick facts</h4>
+          <div class="srow"><span class="sl">Location</span><span class="sv">London, UK</span></div>
+          <div class="srow"><span class="sl">Experience</span><span class="sv">5+ years B2B marketing and ops</span></div>
+          <div class="srow"><span class="sl">Current role</span><span class="sv">Netcompany, since Aug 2024</span></div>
+          <div class="srow"><span class="sl">Studying</span><span class="sv">BrainStation DAC</span></div>
+          <div class="srow"><span class="sl">CRM</span><span class="sv">Dynamics, HubSpot, Airtable, Attio</span></div>
+          <div class="srow"><span class="sl">Building</span><span class="sv">Lovable, Retool, Supabase</span></div>
+          <div class="srow"><span class="sl">LinkedIn</span><span class="sv"><a href="https://www.linkedin.com/in/michael-ukaegbu/" target="_blank">michael-ukaegbu</a></span></div>
+          <div class="srow"><span class="sl">Email</span><span class="sv"><a href="mailto:ukaegbu12@gmail.com">ukaegbu12@gmail.com</a></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fi2">
+    <p>Michael Ukaegbu, GTM and Marketing Operations, London</p>
+    <p><a href="mailto:ukaegbu12@gmail.com">ukaegbu12@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+
+function showTool(id, el) {
+  document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tn').forEach(t => t.classList.remove('active'));
+  document.getElementById('tool-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+</script>
+
+</body>
+</html>
